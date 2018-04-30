@@ -1,3 +1,19 @@
-<div class="o-chatbot">
-  Chatbot Smart Widget to ground control. Over.
+<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}">
+  <div class="o-chatbot__header u-bg-primary u-text-xlight" *ngIf="title">
+    <h1 class="h6 has-base-font u-text-bold u-margin-xs">{{ title }}</h1>
+    <button class="a-button has-icon" *ngIf="pinned">
+      <i class="fa fa-close"></i>
+    </button>
+  </div>
+  <div class="o-chatbot__main u-margin-xs" #chatbotMain [scrollTop]="chatbotMain.scrollHeight">
+    . . .
+  </div>
+  <div class="o-chatbot__footer u-bg-light">
+    <div class="o-chatbot__input a-input u-margin-xs">
+      <input type="text" autocomplete="off" [placeholder]="placeholder" />
+      <button class="a-button-transparent has-icon">
+        <i class="fa fa-send"></i>
+      </button>
+    </div>
+  </div>
 </div>

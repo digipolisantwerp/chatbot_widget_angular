@@ -1,10 +1,59 @@
-@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.colors.scss";
-@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.functions.scss";
-@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.variables.scss";
+@import "~@a-ui/core/dist/assets/styles/quarks";
 
 .o-chatbot {
-  background-color: $background-color-light;
-  color: $text-color;
-  margin: $spacer;
-  padding: $spacer;
+  background-color: $white;
+  border: 1px solid $border-color;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 100%;
+
+  /**
+   * Elements
+   */
+
+  &__header {
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    justify-content: space-between;
+    min-height: $spacer * 2;
+  }
+
+  &__main {
+    flex: 1;
+    min-height: $spacer * 5;
+    overflow: auto;
+  }
+
+  &__footer {
+    border-top: 1px solid $border-color;
+  }
+
+  &__input {
+    display: flex;
+
+    input {
+      flex: 1 1 auto;
+    }
+  }
+
+  /**
+   * Modifiers
+   */
+
+  &--pinned {
+    border-bottom: none;
+    bottom: 0;
+    height: 75vh;
+    left: $spacer;
+    position: fixed;
+    right: $spacer;
+
+    @include at($screen-xs) {
+      left: auto;
+      max-height: $spacer * 20;
+      width: $spacer * 12;
+    }
+  }
 }

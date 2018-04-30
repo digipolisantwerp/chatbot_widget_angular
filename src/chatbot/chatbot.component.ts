@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'aui-chatbot',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './chatbot.component.html'
 })
 export class ChatbotComponent {
-  componentName: 'ChatbotWidget';
+  @Input() title = "";
+  @Input() pinned = false;
+  @Input() placeholder = "";
+
+  public componentName: 'ChatbotWidget';
 }

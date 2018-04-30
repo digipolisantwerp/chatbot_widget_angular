@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100vh;
+}
+
+app {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.u-wrapper {
+    flex: 1 1 auto;
+    max-width: 600px;
+}
+
+header {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    max-width: 600px;
+}
+
+nav a {
+    padding: 0 .5rem 0 0;
+}
+
+h2,
+h3,
+h4,
+h5 {
+    padding-bottom: 1rem;
+}
+
+p, .aui-auto-complete {
+    padding-bottom: 0.5rem;
+}

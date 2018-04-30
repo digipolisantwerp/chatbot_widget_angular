@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      /*"@acpaas-ui/auto-complete": "auto-complete"*/
+    }
+  },
+  "whitelistedNonPeerDependencies": [/*"@acpaas-ui/auto-complete"*/]
+}

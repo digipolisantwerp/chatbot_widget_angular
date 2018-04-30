@@ -1,0 +1,10 @@
+@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.colors.scss";
+@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.functions.scss";
+@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.variables.scss";
+
+.o-chatbot {
+  background-color: $background-color-light;
+  color: $text-color;
+  margin: $spacer;
+  padding: $spacer;
+}

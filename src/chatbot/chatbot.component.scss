@@ -1,4 +1,4 @@
-@import "~@a-ui/core/dist/assets/styles/quarks";
+@import '~@a-ui/core/dist/assets/styles/quarks';
 
 .o-chatbot {
   background-color: $white;
@@ -7,6 +7,7 @@
   flex: 1 1 auto;
   flex-direction: column;
   height: 100%;
+  max-height: 100vh;
 
   /**
    * Elements

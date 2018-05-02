@@ -5,8 +5,12 @@
       <i class="fa fa-close"></i>
     </button>
   </div>
-  <div class="o-chatbot__main u-margin-xs" #chatbotMain [scrollTop]="chatbotMain.scrollHeight">
-    . . .
+  <div class="o-chatbot__main" #chatbotMain [scrollTop]="chatbotMain.scrollHeight">
+    <div *ngIf="data && data.length > 0" class="u-margin-xs">
+      <ng-container *ngFor="let message of data">
+        <message [data]="message" (replyClicked)="sendReply($event)"></message>
+      </ng-container>
+    </div>
   </div>
   <div class="o-chatbot__footer u-bg-light">
     <div class="o-chatbot__input a-input u-margin-xs">

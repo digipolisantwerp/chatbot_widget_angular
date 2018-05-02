@@ -1,0 +1,23 @@
+<div class="m-message">
+  <div [ngSwitch]="data.type" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio', 'm-message--error': data.error}" class="m-message__content">
+
+    <span *ngSwitchCase="'text'" class="m-message__text">
+      {{ data.message }}
+    </span>
+
+    <span *ngSwitchCase="'url'" class="m-message__url">
+      <a href="{{ data.url }}" target="_blank" rel="external">{{ data.message }}</a>
+    </span>
+
+    <span *ngSwitchCase="'image'" class="m-message__image">
+      <img src="{{ data.image }}">
+    </span>
+
+    <span *ngSwitchCase="'radio'" class="m-message__radio">
+      <ng-container *ngFor="let element of data.elements">
+        <button (click)="sendReply(element.replyText)" class="a-button a-button--small">{{ element.text }}</button>
+      </ng-container>
+    </span>
+
+  </div>
+</div>

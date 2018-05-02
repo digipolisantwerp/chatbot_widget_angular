@@ -1,0 +1,48 @@
+@import '~@a-ui/core/dist/assets/styles/quarks';
+
+.m-message {
+  &__content {
+    display: flex;
+    margin: 0 0 $spacer-sm;
+
+    > span {
+      display: inline-block;
+    }
+
+    .a-button {
+      display: inline-block;
+      margin-bottom: $spacer-xs / 2;
+      width: auto;
+    }
+  }
+
+  /**
+   * Components
+   */
+
+  &__text {
+    background-color: $grey-lighter;
+    padding: $spacer-xs $spacer-sm;
+  }
+
+  &__radio {
+    margin-bottom: $spacer-xs / -2;
+  }
+
+  /**
+   * Modifiers
+   */
+  .m-message--center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .m-message--right {
+    justify-content: flex-end;
+    text-align: center;
+
+    .m-message__text {
+      background-color: mix($brand-primary, $white, 10%);
+    }
+  }
+}

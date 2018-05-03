@@ -1,4 +1,4 @@
-<div class="m-message">
+<div class="m-message" *ngIf="!data.hide">
   <div [ngSwitch]="data.type" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio'}" class="m-message__content">
 
     <span *ngSwitchCase="'text'" class="m-message__text">

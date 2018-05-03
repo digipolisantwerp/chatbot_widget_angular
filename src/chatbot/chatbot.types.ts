@@ -10,6 +10,7 @@ export interface ChatbotMessage {
   image?: string;
   url?: string;
   send?: boolean;
+  hide?: boolean;
 }
 
 export type ChatbotConversation = ChatbotMessage[];

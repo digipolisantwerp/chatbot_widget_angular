@@ -21,5 +21,6 @@ export class MessageComponent {
 
   public sendReply(message: ChatbotMessageButton): void {
     this.replyClicked.emit({ message });
+    this.data.hide = true;
   }
 }

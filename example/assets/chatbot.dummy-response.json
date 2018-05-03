@@ -6,9 +6,23 @@
     "data": [
         {
             "url": null,
-            "message": "Ik antwoord met dummy data.",
+            "message": "Click a button.",
             "type": "text",
             "image": null
+        },
+        {
+            "message": "",
+            "elements": [
+                {
+                    "text": "Click me",
+                    "replyText": "Click me"
+                },
+                {
+                    "text": "No, me!",
+                    "replyText": "No, me!"
+                }
+            ],
+            "type": "radio"
         }
     ],
     "id": 193617,

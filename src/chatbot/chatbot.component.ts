@@ -1,9 +1,15 @@
 import {
   Component,
+  ElementRef,
   Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
-import { ChatbotConversation } from './chatbot.types';
+import { ChatbotService } from './chatbot.service';
+import {
+  ChatbotMessage,
+  ChatbotConversation,
+} from './chatbot.types';
 import { DUMMY_DATA } from './chatbot.dummy-data';
 
 @Component({
@@ -12,18 +18,76 @@ import { DUMMY_DATA } from './chatbot.dummy-data';
   templateUrl: './chatbot.component.html',
 })
 export class ChatbotComponent implements OnInit {
+  @ViewChild('messageInput') messageInput: ElementRef;
+
+  @Input() url = '';
   @Input() title = '';
   @Input() pinned = false;
   @Input() placeholder = '';
+  @Input() delay = 400;
 
-  public data: ChatbotConversation;
-  public componentName: 'ChatbotWidget';
+  public loading = false;
+  public data: ChatbotConversation = [];
+  public message: ChatbotMessage = {
+    message: '',
+    type: 'text',
+    send: true,
+  };
+
+  constructor(
+    private chatbotService: ChatbotService,
+  ) {}
 
   public ngOnInit(): void {
-    this.data = DUMMY_DATA;
+    // In a later stage, you may want to retrieve the conversation history here.
+  }
+
+  public sendMessage(): void {
+    if (!this.message.message) { return; }
+
+    // Start loader
+    setTimeout(() => {
+      this.loading = true;
+    }, this.delay);
+
+    // Add to data
+    this.addToChat(this.message);
+
+
+    // Send new data
+    this.chatbotService.sendMessage(this.url, this.message)
+      .subscribe(
+        (result: ChatbotConversation) => {
+          result.forEach((item: ChatbotMessage, index) => {
+            setTimeout(() => {
+              this.addToChat(item);
+            }, index * this.delay);
+          });
+          this.loading = false;
+        },
+        error => {
+          console.log('Error!', error);
+          this.loading = false;
+        }
+      );
+
+    // Clean
+    this.message.message = '';
+
+    // Focus
+    this.messageInput.nativeElement.focus();
   }
 
   public sendReply(event: any): void {
-    console.log('Button "' + event.message + '" was clicked!');
+    this.message.message = event.message;
+    this.sendMessage();
+  }
+
+  private addToChat(message): void {
+    const newData = [
+      ...this.data,
+      Object.assign({}, message),
+    ];
+    this.data = newData;
   }
 }

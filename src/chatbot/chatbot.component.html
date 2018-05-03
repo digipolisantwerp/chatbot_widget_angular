@@ -10,14 +10,21 @@
       <ng-container *ngFor="let message of data">
         <message [data]="message" (replyClicked)="sendReply($event)"></message>
       </ng-container>
+      <div *ngIf="loading" class="o-chatbot__loader">
+        <span>...</span>
+      </div>
     </div>
   </div>
   <div class="o-chatbot__footer u-bg-light">
     <div class="o-chatbot__input a-input u-margin-xs">
-      <input type="text" autocomplete="off" [placeholder]="placeholder" />
-      <button class="a-button-transparent has-icon">
+      <input type="text" id="chat-input" name="chat-input" autocomplete="off" #messageInput [placeholder]="placeholder" [(ngModel)]="message.message" (keyup.enter)="sendMessage()" />
+      <button class="a-button-transparent has-icon" (click)="sendMessage()">
         <i class="fa fa-send"></i>
       </button>
     </div>
   </div>
 </div>
+
+<!-- <pre>
+"message": {{ message | json }}
+</pre> -->

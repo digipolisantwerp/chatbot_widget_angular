@@ -27,6 +27,15 @@
     overflow: auto;
   }
 
+  &__loader {
+    span {
+      display: inline-block;
+      font-size: 2rem;
+      height: $spacer;
+      margin-bottom: $spacer-sm;
+    }
+  }
+
   &__footer {
     border-top: 1px solid $border-color;
   }

@@ -6,6 +6,7 @@
     margin: 0 0 $spacer-sm;
 
     > span {
+      animation: pop .2s ease-out;
       display: inline-block;
     }
 
@@ -44,5 +45,19 @@
     .m-message__text {
       background-color: mix($brand-primary, $white, 10%);
     }
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

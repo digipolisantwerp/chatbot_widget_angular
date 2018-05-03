@@ -1,0 +1,44 @@
+{
+    "exited_engine": 1525330244.680935,
+    "entered_engine": 1525330244.676273,
+    "session": "813457bc-99d6-5e94-c494-fed00db04dc9",
+    "processed": "4.66 milliseconds",
+    "data": [
+        {
+            "url": null,
+            "message": "Ik antwoord met dummy data.",
+            "type": "text",
+            "image": null
+        }
+    ],
+    "id": 193617,
+    "metadata": {
+        "entities": [],
+        "estimates": [
+            {
+                "probability": 0.4666666666666666,
+                "label": "hallo"
+            },
+            {
+                "probability": 0.19999999999999998,
+                "label": "nieuwetest"
+            },
+            {
+                "probability": 0.13333333333333328,
+                "label": "betrokkene"
+            },
+            {
+                "probability": 0.13333333333333328,
+                "label": "akte-aanvragen"
+            },
+            {
+                "probability": 0.0666666666666667,
+                "label": "bedankt"
+            }
+        ],
+        "label": "unanswered"
+    },
+    "time": 7,
+    "reentered_api": 1525330244682,
+    "chatbotName": "Akte-aanvraag"
+}

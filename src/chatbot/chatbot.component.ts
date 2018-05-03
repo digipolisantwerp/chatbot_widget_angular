@@ -26,13 +26,15 @@ export class ChatbotComponent implements OnInit {
   @Input() placeholder = '';
   @Input() delay = 400;
 
-  public loading = false;
   public data: ChatbotConversation = [];
   public message: ChatbotMessage = {
     message: '',
     type: 'text',
     send: true,
   };
+
+  public loading = false;
+  public open = false;
 
   constructor(
     private chatbotService: ChatbotService,
@@ -81,6 +83,15 @@ export class ChatbotComponent implements OnInit {
   public sendReply(event: any): void {
     this.message.message = event.message;
     this.sendMessage();
+  }
+
+  public toggleChatbot(): void {
+    this.open = !this.open;
+    if (this.open) {
+      setTimeout(() => {
+        this.messageInput.nativeElement.focus();
+      }, 0);
+    }
   }
 
   private addToChat(message): void {

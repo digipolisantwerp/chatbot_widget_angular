@@ -1,13 +1,19 @@
 @import '~@a-ui/core/dist/assets/styles/quarks';
 
 .o-chatbot {
-  background-color: $white;
-  border: 1px solid $border-color;
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  height: 100%;
-  max-height: 100vh;
+  &__content {
+    background-color: $white;
+    border: 1px solid $border-color;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100vh;
+  }
+
+  &__buttons {
+    float: right;
+  }
 
   /**
    * Elements
@@ -53,16 +59,22 @@
    */
 
   &--pinned {
-    border-bottom: none;
     bottom: 0;
-    height: 75vh;
     left: $spacer;
     position: fixed;
     right: $spacer;
 
+    .o-chatbot__content {
+      border-bottom: none;
+      height: 75vh;
+
+      @include at($screen-xs) {
+        max-height: $spacer * 20;
+      }
+    }
+
     @include at($screen-xs) {
       left: auto;
-      max-height: $spacer * 20;
       width: $spacer * 12;
     }
   }

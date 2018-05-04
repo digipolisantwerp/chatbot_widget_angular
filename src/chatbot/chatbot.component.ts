@@ -20,18 +20,16 @@ import { DUMMY_DATA } from './chatbot.dummy-data';
 export class ChatbotComponent implements OnInit {
   @ViewChild('messageInput') messageInput: ElementRef;
 
-  @Input() url = '';
+  @Input() url: string;
+  @Input() session: string;
   @Input() title = '';
   @Input() pinned = false;
   @Input() placeholder = '';
   @Input() delay = 400;
+  @Input() height = 400;
 
   public data: ChatbotConversation = [];
-  public message: ChatbotMessage = {
-    message: '',
-    type: 'text',
-    send: true,
-  };
+  public message: ChatbotMessage;
 
   public loading = false;
   public open = false;
@@ -41,6 +39,12 @@ export class ChatbotComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.message = {
+      session_id: this.session,
+      message: '',
+      type: 'text',
+      send: true,
+    };
     // In a later stage, you may want to retrieve the conversation history here.
   }
 
@@ -48,9 +52,7 @@ export class ChatbotComponent implements OnInit {
     if (!this.message.message) { return; }
 
     // Start loader
-    setTimeout(() => {
-      this.loading = true;
-    }, this.delay);
+    this.loading = true;
 
     // Add to data
     this.addToChat(this.message);
@@ -68,7 +70,7 @@ export class ChatbotComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          console.log('Error!', error);
+          this.pushError(error);
           this.loading = false;
         }
       );
@@ -100,5 +102,13 @@ export class ChatbotComponent implements OnInit {
       Object.assign({}, message),
     ];
     this.data = newData;
+  }
+
+  private pushError(error) {
+    const errorMessage: ChatbotMessage = {
+      message: 'Error ' + error.status + ' - ' + error.statusText + ': ' + error.error.title,
+      type: 'error',
+    };
+    this.addToChat(errorMessage);
   }
 }

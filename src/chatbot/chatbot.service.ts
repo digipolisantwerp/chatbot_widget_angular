@@ -22,13 +22,13 @@ export class ChatbotService {
 
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
 
-    // return this.http.post(url, message)
-    //   .map(result => result['data'])
-    //   .catch((error: any) => Observable.throw(error || 'Something went wrong'));
+    return this.http.post(url, message)
+      .map(result => result['data'])
+      .catch((error: any) => Observable.throw(error || 'Something went wrong'));
 
-    return this.http.get('./assets/chatbot.dummy-response.json')
-      .delay(1000)
-      .map(result => result['data']);
+    // return this.http.get('./assets/chatbot.dummy-response.json')
+    //   .delay(1000)
+    //   .map(result => result['data']);
   }
 
 }

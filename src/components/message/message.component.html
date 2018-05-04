@@ -1,5 +1,5 @@
 <div class="m-message" *ngIf="!data.hide">
-  <div [ngSwitch]="data.type" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio'}" class="m-message__content">
+  <div [ngSwitch]="data.type" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio' || data.type === 'error'}" class="m-message__content">
 
     <span *ngSwitchCase="'text'" class="m-message__text">
       {{ data.message }}
@@ -17,6 +17,10 @@
       <ng-container *ngFor="let element of data.elements">
         <button (click)="sendReply(element.replyText)" class="a-button a-button--small">{{ element.text }}</button>
       </ng-container>
+    </span>
+
+    <span *ngSwitchCase="'error'" class="m-message__error u-text-danger">
+      {{ data.message }}
     </span>
 
   </div>

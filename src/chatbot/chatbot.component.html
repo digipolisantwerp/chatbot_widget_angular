@@ -1,4 +1,4 @@
-<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}">
+<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}" [ngStyle]="{'height':!pinned ? height + 'px' : '' }">
   <div class="o-chatbot__content" *ngIf="!pinned || (pinned && open)">
     <div class="o-chatbot__header u-bg-primary u-text-xlight" *ngIf="title">
       <h1 class="h6 has-base-font u-text-bold u-margin-xs">{{ title }}</h1>
@@ -28,7 +28,6 @@
   </div>
 </div>
 
-
-<!-- <pre>
-"message": {{ message | json }}
-</pre> -->
+<pre class="a-pre a-pre--scrollable u-margin-top-lg"><code>"message": {{ message | json }},
+"loading": {{ loading }},
+"pinned": {{ pinned }}</code></pre>

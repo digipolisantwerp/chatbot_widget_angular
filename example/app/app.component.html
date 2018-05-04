@@ -1,13 +1,16 @@
-<header>
-  <h1 class="h4">Chatbot Smart Widget Playground</h1>
-</header>
-<div class="main">
-  <div class="u-margin-lg">
+<div class="u-margin-lg">
+  <header>
+    <h1 class="h4">Chatbot Smart Widget Playground</h1>
+  </header>
+  <div class="main u-margin-top-lg">
     <aui-chatbot
+      [url]="'http://localhost:3002/chatbots/afvalstickers/messages'"
+      [session]="'1234'"
       [title]="'Mijn chatbot'"
       [placeholder]="'Typ hier je bericht…'"
-      [pinned]="true"
-      [delay]="200">
+      [pinned]="false"
+      [delay]="200"
+      [height]="500">
     </aui-chatbot>
   </div>
 </div>

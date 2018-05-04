@@ -26,6 +26,11 @@
     padding: $spacer-xs $spacer-sm;
   }
 
+  &__error {
+    background-color: mix($state-danger, $white, 10%);
+    padding: $spacer-xs $spacer-sm;
+  }
+
   &__radio {
     margin-bottom: $spacer-xs / -2;
   }

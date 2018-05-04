@@ -5,9 +5,10 @@ export interface ChatbotMessageButton {
 
 export interface ChatbotMessage {
   message: string;
-  type: 'text' | 'url' | 'image' | 'radio';
+  type: 'text' | 'url' | 'image' | 'radio' | 'error';
   elements?: ChatbotMessageButton[];
   image?: string;
+  session_id?: string;
   url?: string;
   send?: boolean;
   hide?: boolean;

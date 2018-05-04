@@ -3,7 +3,12 @@
 .m-message {
   &__content {
     display: flex;
-    margin: 0 0 $spacer-sm;
+    margin: 0 $spacer $spacer-sm 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
 
     > span {
       animation: pop .2s ease-out;
@@ -21,7 +26,8 @@
    * Components
    */
 
-  &__text {
+  &__text,
+  &__url {
     background-color: $grey-lighter;
     padding: $spacer-xs $spacer-sm;
   }
@@ -45,6 +51,7 @@
 
   .m-message--right {
     justify-content: flex-end;
+    margin: 0 0 $spacer-sm $spacer;
     text-align: center;
 
     .m-message__text {

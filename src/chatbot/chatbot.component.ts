@@ -31,8 +31,10 @@ export class ChatbotComponent implements OnInit {
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;
 
-  public loading = false;
-  public open = false;
+  public state = {
+    loading: false,
+    open: false,
+  };
 
   constructor(
     private chatbotService: ChatbotService,
@@ -52,11 +54,10 @@ export class ChatbotComponent implements OnInit {
     if (!this.message.message) { return; }
 
     // Start loader
-    this.loading = true;
+    this.state.loading = true;
 
     // Add to data
     this.addToChat(this.message);
-
 
     // Send new data
     this.chatbotService.sendMessage(this.url, this.message)
@@ -67,11 +68,11 @@ export class ChatbotComponent implements OnInit {
               this.addToChat(item);
             }, index * this.delay);
           });
-          this.loading = false;
+          this.state.loading = false;
         },
         error => {
           this.pushError(error);
-          this.loading = false;
+          this.state.loading = false;
         }
       );
 
@@ -88,8 +89,8 @@ export class ChatbotComponent implements OnInit {
   }
 
   public toggleChatbot(): void {
-    this.open = !this.open;
-    if (this.open) {
+    this.state.open = !this.state.open;
+    if (this.state.open) {
       setTimeout(() => {
         this.messageInput.nativeElement.focus();
       }, 0);
@@ -104,7 +105,7 @@ export class ChatbotComponent implements OnInit {
     this.data = newData;
   }
 
-  private pushError(error) {
+  private pushError(error): void {
     const errorMessage: ChatbotMessage = {
       message: 'Error ' + error.status + ' - ' + error.statusText + ': ' + error.error.title,
       type: 'error',

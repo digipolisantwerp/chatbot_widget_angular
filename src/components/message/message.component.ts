@@ -10,7 +10,7 @@ import {
 } from '../../chatbot/chatbot.types';
 
 @Component({
-  selector: 'message',
+  selector: 'aui-chatbot-message',
   styleUrls:  ['./message.component.scss'],
   templateUrl: './message.component.html',
 })

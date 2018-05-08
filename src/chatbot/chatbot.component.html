@@ -7,7 +7,7 @@
     <div class="o-chatbot__main" #chatbotMain [scrollTop]="chatbotMain.scrollHeight">
       <div *ngIf="data && data.length > 0" class="u-margin-xs">
         <ng-container *ngFor="let message of data">
-          <message [data]="message" (replyClicked)="sendReply($event)"></message>
+          <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)"></aui-chatbot-message>
         </ng-container>
         <div *ngIf="state.loading" class="o-chatbot__loader">
           <span>...</span>

@@ -84,29 +84,29 @@
         }
       }
     },
-    "chatbot_widget_angular-e2e": {
-      "root": "",
-      "sourceRoot": "",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "chatbot_widget_angular:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    }
+    // "chatbot_widget_angular-e2e": {
+    //   "root": "",
+    //   "sourceRoot": "",
+    //   "projectType": "application",
+    //   "architect": {
+    //     "e2e": {
+    //       "builder": "@angular-devkit/build-angular:protractor",
+    //       "options": {
+    //         "protractorConfig": "./protractor.conf.js",
+    //         "devServerTarget": "chatbot_widget_angular:serve"
+    //       }
+    //     },
+    //     "lint": {
+    //       "builder": "@angular-devkit/build-angular:tslint",
+    //       "options": {
+    //         "tsConfig": [],
+    //         "exclude": [
+    //           "**/node_modules/**"
+    //         ]
+    //       }
+    //     }
+    //   }
+    // }
   },
   "defaultProject": "chatbot_widget_angular",
   "schematics": {
@@ -114,11 +114,11 @@
       "spec": false
     },
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "aui",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "aui"
     }
   }
 }

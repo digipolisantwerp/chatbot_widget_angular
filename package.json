@@ -1,9 +1,9 @@
 {
-  "name": "@acpaas-ui-widgets/ngx-starter-kit",
-  "description": "Smart Widget UI Starter Kit (Angular)",
+  "name": "@acpaas-ui-widgets/chatbot",
+  "description": "Chatbot Smart Widget (Angular)",
   "author": {
-    "name": "Joeri Sebrechts",
-    "email": "joeri.sebrechts@digipolis.be"
+    "name": "Jasper Van Proeyen",
+    "email": "jasper.vanproeyen@digipolis.be"
   },
   "version": "1.0.0",
   "license": "MIT",
@@ -20,16 +20,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/digipolisantwerp/starter-kit_widget_angular.git"
+    "url": "git+https://github.com/trianglejuice/chatbot_widget_angular.git"
   },
   "bugs": {
-    "url": "https://github.com/digipolisantwerp/starter-kit_widget_angular/issues"
+    "url": "https://github.com/trianglejuice/chatbot_widget_angular/issues"
   },
-  "homepage": "https://github.com/digipolisantwerp/starter-kit_widget_angular#readme",
+  "homepage": "https://github.com/trianglejuice/chatbot_widget_angular#readme",
   "keywords": [
     "angular",
     "library",
-    "starter",
+    "chatbot",
     "typescript",
     "angular-cli",
     "ng-packagr"
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@a-ui/core": "^2.0.3",
     "@angular/animations": "^5.0.0",
-    "@angular/cli": "1.7.3",
+    "@angular/cli": "^6.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/compiler-cli": "^5.0.0",
@@ -75,7 +75,8 @@
     "tslint": "~5.7.0",
     "typescript": "~2.4.2",
     "watch": "^1.0.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "@angular-devkit/build-angular": "~0.6.0"
   },
   "publishConfig": {
     "registry": "https://nexusrepo.antwerpen.be/repository/npm-private/"

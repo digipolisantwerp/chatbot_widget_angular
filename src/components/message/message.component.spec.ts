@@ -4,7 +4,7 @@ import { MessageComponent } from './message.component';
 
 @Component({
     selector: 'aui-test',
-    template: '<aui-chatbot-message [data]="data"></aui-chatbot-message>',
+    template: '<aui-chatbot-message [data]="data" (replyClicked)="sendReply($event)"></aui-chatbot-message>',
 })
 export class TestComponent {
     @Input() data: any;
@@ -58,6 +58,15 @@ describe('MessageComponent', () => {
       expect(fixture.nativeElement.querySelector('.m-message__image img').getAttribute('src')).toEqual(component.data.image);
     });
 
+    it('should render an error', () => {
+      component.data = {
+        'message': 'Error',
+        'type': 'error',
+      };
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.m-message__error').innerText).toEqual('Error');
+    });
+
     it('should render buttons', () => {
       component.data = {
         'message': '',
@@ -82,13 +91,35 @@ describe('MessageComponent', () => {
       }
     });
 
-    it('should render an error', () => {
-      component.data = {
-        'message': 'Error',
-        'type': 'error',
+
+  });
+
+  describe('Event Emitter', () => {
+    it('should emit replyClicked event', (done) => {
+      const reply = {
+        replyText: 'Reply',
+        text: 'reply',
       };
-      fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.m-message__error').innerText).toEqual('Error');
+      const messageComponent = new MessageComponent();
+      messageComponent.data = {
+        'message': '',
+        'type': 'radio',
+        'elements': [
+          {
+            'text': 'Click me',
+            'replyText': 'Click me',
+          },
+          {
+            'text': 'No, me!',
+            'replyText': 'No, me!',
+          },
+        ],
+      };
+      messageComponent.replyClicked.subscribe(g => {
+        expect(g.message).toEqual(reply);
+        done();
+      });
+      messageComponent.sendReply(reply);
     });
   });
 });

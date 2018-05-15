@@ -69,15 +69,13 @@ export class ChatbotComponent implements OnInit {
             }, index * this.delay);
           });
           this.state.loading = false;
+          this.message.message = '';
         },
         error => {
           this.pushError(error);
           this.state.loading = false;
         }
       );
-
-    // Clean
-    this.message.message = '';
 
     // Focus
     this.messageInput.nativeElement.focus();

@@ -12,19 +12,24 @@ import {
   ChatbotConversation,
 } from './chatbot.types';
 
-const mockData = {
+const mockData: ChatbotMessage = {
   message: 'Hello',
   type: 'text',
 };
 
-const mockResponse = {
-  message: 'Hello from chatbot',
-  type: 'text',
+const mockError = {
+  status: '401',
+  statusText: 'Unauthorized',
+  error: {
+    title: 'Please login first!'
+  }
 };
 
 class MockChatbotService {
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
+    console.log(url, message);
     return Observable.of([mockData]);
+    // return Observable.throw(mockError);
   }
 }
 
@@ -88,13 +93,6 @@ describe('Chatbot widget', () => {
     });
 
     it('should add an error to the chat', () => {
-      const mockError = {
-        status: '401',
-        statusText: 'Unauthorized',
-        error: {
-          title: 'Please login first!'
-        }
-      };
       component.data = [mockData];
       component.pushError(mockError);
       expect(component.data).toEqual([{
@@ -107,7 +105,7 @@ describe('Chatbot widget', () => {
     });
   });
 
-  describe('General workings', () => {
+  describe('General behaviour', () => {
 
     it('should send a message', () => {
       fixture.detectChanges();
@@ -125,18 +123,19 @@ describe('Chatbot widget', () => {
     });
 
     it('should send a reply when a button is clicked', () => {
-      const mockEvent = {
-        status: '401',
-        statusText: 'Unauthorized',
-        error: {
-          title: 'Please login first!'
-        }
-      };
       fixture.detectChanges();
       spyOn(component, 'sendMessage').and.callThrough();
-      component.sendReply(mockEvent);
+      component.sendReply(mockData);
       expect(component.sendMessage).toHaveBeenCalled();
     });
+
+    // it('should return an error', () => {
+    //   component.url = '/mockErrorUrl';
+    //   fixture.detectChanges();
+    //   spyOn(component, 'sendMessage').and.returnValue(Observable.throw(mockError));
+    //   component.sendReply(mockData);
+    //   expect(component.sendMessage).toHaveBeenCalled();
+    // });
   });
 
 });

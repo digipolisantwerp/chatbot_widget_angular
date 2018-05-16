@@ -1,5 +1,5 @@
 <div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}" [ngStyle]="{'height':!pinned ? height + 'px' : '' }">
-  <div class="o-chatbot__content" *ngIf="!pinned || (pinned && state.open)">
+  <div class="o-chatbot__content" *ngIf="!pinned || (pinned && isOpen)">
     <div class="o-chatbot__header u-bg-primary u-text-xlight" *ngIf="title">
       <h1 class="h6 has-base-font u-text-bold u-margin-xs">{{ title }}</h1>
       <button class="a-button has-icon" *ngIf="pinned" (click)="toggleChatbot()"><i class="fa fa-close"></i></button>
@@ -9,7 +9,7 @@
         <ng-container *ngFor="let message of data">
           <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)"></aui-chatbot-message>
         </ng-container>
-        <div *ngIf="state.loading" class="o-chatbot__loader">
+        <div *ngIf="isLoading" class="o-chatbot__loader">
           <span>...</span>
         </div>
       </div>
@@ -23,10 +23,11 @@
       </div>
     </div>
   </div>
-  <div class="o-chatbot__buttons" *ngIf="pinned && !state.open">
+  <div class="o-chatbot__buttons" *ngIf="pinned && !isOpen">
     <button (click)="toggleChatbot()" class="a-button has-icon-left"><i class="fa fa-comments"></i>Een vraag stellen</button>
   </div>
 </div>
 
 <pre class="a-pre a-pre--scrollable u-margin-top-lg"><code>"message": {{ message | json }},
-"state": {{ state | json }},</code></pre>
+"loading": {{ isLoading }},
+"open": {{ isOpen }},</code></pre>

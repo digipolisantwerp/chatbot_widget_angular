@@ -116,10 +116,10 @@ describe('Chatbot widget', () => {
     it('should toggle its visibility', () => {
       component.toggleChatbot();
       fixture.detectChanges();
-      expect(component.state.open).toEqual(true);
+      expect(component.isOpen).toEqual(true);
       component.toggleChatbot();
       fixture.detectChanges();
-      expect(component.state.open).toEqual(false);
+      expect(component.isOpen).toEqual(false);
     });
 
     it('should send a reply when a button is clicked', () => {

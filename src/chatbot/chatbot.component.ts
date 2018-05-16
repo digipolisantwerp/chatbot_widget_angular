@@ -10,7 +10,6 @@ import {
   ChatbotMessage,
   ChatbotConversation,
 } from './chatbot.types';
-import { DUMMY_DATA } from './chatbot.dummy-data';
 
 @Component({
   selector: 'aui-chatbot',
@@ -20,21 +19,31 @@ import { DUMMY_DATA } from './chatbot.dummy-data';
 export class ChatbotComponent implements OnInit {
   @ViewChild('messageInput') messageInput: ElementRef;
 
+  // BFF URL
   @Input() url: string;
+
+  // Required session ID to easily retrieve the chat history if necessary
   @Input() session: string;
+
+  // Title above the chat window
   @Input() title = '';
+
+  // Whether the chatbot is inline or pinned to the bottom of the application
   @Input() pinned = false;
+
+  // Placeholder string in the chat input field
   @Input() placeholder = '';
+
+  // Delay between multiple messages received from the chatbot engine
   @Input() delay = 400;
+
+  // Height of the chatbot in pixels
   @Input() height = 400;
 
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;
-
-  public state = {
-    loading: false,
-    open: false,
-  };
+  public isLoading = false;
+  public isOpen = false;
 
   constructor(
     private chatbotService: ChatbotService,
@@ -54,7 +63,7 @@ export class ChatbotComponent implements OnInit {
     if (!this.message.message) { return; }
 
     // Start loader
-    this.state.loading = true;
+    this.isLoading = true;
 
     // Add to data
     this.addToChat(this.message);
@@ -68,12 +77,12 @@ export class ChatbotComponent implements OnInit {
               this.addToChat(item);
             }, index * this.delay);
           });
-          this.state.loading = false;
+          this.isLoading = false;
           this.message.message = '';
         },
         error => {
           this.pushError(error);
-          this.state.loading = false;
+          this.isLoading = false;
         }
       );
 
@@ -87,8 +96,8 @@ export class ChatbotComponent implements OnInit {
   }
 
   public toggleChatbot(): void {
-    this.state.open = !this.state.open;
-    if (this.state.open) {
+    this.isOpen = !this.isOpen;
+    if (this.isOpen) {
       setTimeout(() => {
         this.messageInput.nativeElement.focus();
       }, 0);

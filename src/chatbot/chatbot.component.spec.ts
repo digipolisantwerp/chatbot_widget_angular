@@ -27,7 +27,6 @@ const mockError = {
 
 class MockChatbotService {
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
-    console.log(url, message);
     return Observable.of([mockData]);
     // return Observable.throw(mockError);
   }

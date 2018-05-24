@@ -25,6 +25,10 @@
     display: flex;
     justify-content: space-between;
     min-height: $spacer * 2;
+
+    &--no-title {
+      justify-content: flex-end;
+    }
   }
 
   &__main {

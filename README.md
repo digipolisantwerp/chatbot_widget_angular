@@ -1,38 +1,99 @@
-# Smart Widget UI Starter Kit (Angular)
+# Chatbot Smart Widget UI (Angular)
 
-This is a starter kit for building the Angular 5+ front-end for an ACPaaS UI Smart Widget. To learn more about Smart Widgets and find out the guidelines for how to use this starter kit, see the [Smart Widget index page](https://github.com/digipolisantwerp/smart-widgets).
+With the chatbot smart widget you can simply implement a chatbot in any page.
 
-To build a new widget front-end:
+You will also need the BFF package in order to get the chatbot smart widget to work: [http://github.com/TriangleJuice/chatbot_service_nodejs](http://github.com/TriangleJuice/chatbot_service_nodejs)
 
-1. Clone this repo.
+<img src="screenshot.png" alt="Chatbot screenshot" style="max-width:410px;width:100%">
 
-   `git clone https://github.com/digipolisantwerp/starter-kit_widget_angular.git`
+There is a demo app, see below for instructions on running it.
 
-2. Implement your widget in the `src` folder.
+## How to use
 
-3. Implement an example for your widget in the `example` folder
+### Installing
 
-   - If your widget can be used with and without a BFF, please include an example of both.
+Copy the .npmrc file from this repo to your local repo to set up the link to nexusrepo.antwerpen.be npm repository.
 
-4. Write some tests for your widget by adding `.spec.ts files` in the src folder.
+Then install (you will need to be connected to the Digipolis network):
 
-   - Test using `npm test` to run once, and `npm run test-watch` to run in watch mode.
+```sh
+> npm install @acpaas-ui-widgets/ngx/chatbot
+```
 
-5. Update all the relevant files to replace the references to `starter-kit`, `Starter Kit` and `example`.
+Import the component in your module:
 
-   - `package.json`: ACPaaS UI components you depend on should go into `dependencies`
-   - `.angular-cli.json`
-   - Any other files that contain the above mentioned words...
-   - Delete `package-lock.json` and run `npm install` to regenerate it.
+```ts
+@NgModule({
+  imports: [
+    ...,
+    ChatbotModule
+  ],
+  ...
+})
+```
 
-6. Place appropriate README.md and CONTRIBUTING.md files.
+In the index.html, include the core branding stylesheet:
 
-   - Replace `README.md` by `README.example.md` and edit it.
-   - Replace `CONTRIBUTING.md` by `CONTRIBUTING.example.md` and edit it.
+```html
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/2.1.1/main.min.css">
+```
 
-7. Push your widget to a new repo.
+### In your template
 
-8. Follow the instructions from the [Smart Widgets contributing page](https://github.com/digipolisantwerp/starter-kit_widget_angular/blob/master/CONTRIBUTING.md) to notify Digipolis about your widget and get it published.
+```html
+<aui-chatbot
+  url="http://localhost:3000/api/bff"
+  session="123456789"
+  title="My chatbot"
+  placeholder="Typ your message here…"
+  [pinned]="false"
+  [delay]="200"
+  [height]="400">
+</aui-chatbot>
+```
+
+### Supported attributes
+
+#### **url**
+*string* - BFF URL
+
+#### **session**
+*string* - Required session ID to easily retrieve the chat history if necessary
+
+#### **title**
+*string* - Title above the chat window
+
+#### **pinned**
+*boolean* - Whether the chatbot is inline or pinned to the bottom of the application
+
+#### **placeholder**
+*string* - Placeholder string in the chat input field
+
+#### **delay**
+*number* - Delay between multiple messages received from the chatbot engine
+
+#### **height**
+*number* - Height of the chatbot in pixels
+
+
+## Run the demo app
+
+Set up the .npmrc (see above), then run:
+
+```sh
+> npm install
+> npm start
+```
+
+Browse to [localhost:4200](http://localhost:4200)
+
+To use the chatbot widget, you will need to have also started the corresponding back-end service.
+
+## Contributing
+
+We welcome your bug reports and pull requests.
+
+Please see our [contribution guide](CONTRIBUTING.md).
 
 ## License
 

@@ -4,13 +4,21 @@
   </header>
   <div class="main u-margin-top-lg">
     <aui-chatbot
-      [url]="'http://localhost:3002/chatbots/afvalstickers/messages'"
+      [url]="'http://localhost:3000/api/chatbot/afvalstickers'"
       [session]="'1234'"
-      [title]="'Mijn chatbot'"
-      [placeholder]="'Typ hier je bericht…'"
+      [title]="'My chatbot'"
+      [placeholder]="'Typ your message here…'"
       [pinned]="false"
       [delay]="200"
-      [height]="500">
+      [height]="400">
+    </aui-chatbot>
+  </div>
+  <div class="main u-margin-top-lg">
+    <aui-chatbot
+      [url]="'http://localhost:3000/api/chatbot/afvalstickers'"
+      [session]="'abcd'"
+      [placeholder]="'Typ hier iets anders…'"
+      [pinned]="true">
     </aui-chatbot>
   </div>
 </div>

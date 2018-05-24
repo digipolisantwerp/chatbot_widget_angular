@@ -25,10 +25,6 @@ export class ChatbotService {
     return this.http.post(url, message)
       .map(result => result['data'])
       .catch((error: any) => Observable.throw(error));
-
-    // return this.http.get('./assets/chatbot.dummy-response.json')
-    //   .delay(1000)
-    //   .map(result => result['data']);
   }
 
 }

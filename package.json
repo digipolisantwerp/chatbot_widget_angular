@@ -1,5 +1,5 @@
 {
-  "name": "@acpaas-ui-widgets/chatbot",
+  "name": "@acpaas-ui-widgets/ngx-chatbot",
   "description": "Chatbot Smart Widget (Angular)",
   "author": {
     "name": "Jasper Van Proeyen",

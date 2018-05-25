@@ -4,7 +4,7 @@ With the chatbot smart widget you can simply implement a chatbot in any page.
 
 You will also need the BFF package in order to get the chatbot smart widget to work: [http://github.com/TriangleJuice/chatbot_service_nodejs](http://github.com/TriangleJuice/chatbot_service_nodejs)
 
-<img src="screenshot.png" alt="Chatbot screenshot" style="max-width:410px;width:100%">
+<img src="screenshot.png" alt="Chatbot screenshot" width="410" style="max-width:410px;width:100%">
 
 There is a demo app, see below for instructions on running it.
 
@@ -45,7 +45,7 @@ In the index.html, include the core branding stylesheet:
   url="http://localhost:3000/api/bff"
   session="123456789"
   title="My chatbot"
-  placeholder="Typ your message here…"
+  placeholder="Type your message here…"
   [pinned]="false"
   [delay]="200"
   [height]="400">
@@ -55,25 +55,25 @@ In the index.html, include the core branding stylesheet:
 ### Supported attributes
 
 #### **url**
-*string* - BFF URL
+`string` BFF URL.
 
 #### **session**
-*string* - Required session ID to easily retrieve the chat history if necessary
+`string` Required session ID to easily retrieve the chat history if necessary.
 
 #### **title**
-*string* - Title above the chat window
+`string` Title above the chat window.
 
 #### **pinned**
-*boolean* - Whether the chatbot is inline or pinned to the bottom of the application
+`boolean` Whether the chatbot is inline or pinned to the bottom of the application.
 
 #### **placeholder**
-*string* - Placeholder string in the chat input field
+`string` Placeholder string in the chat input field.
 
 #### **delay**
-*number* - Delay between multiple messages received from the chatbot engine
+`number` Delay between multiple messages received from the chatbot engine.
 
 #### **height**
-*number* - Height of the chatbot in pixels
+`number` Height of the chatbot in pixels.
 
 
 ## Run the demo app

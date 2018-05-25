@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trianglejuice/chatbot_widget_angular.git"
+    "url": "git+https://github.com/digipolisantwerp/chatbot_widget_angular.git"
   },
   "bugs": {
-    "url": "https://github.com/trianglejuice/chatbot_widget_angular/issues"
+    "url": "https://github.com/digipolisantwerp/chatbot_widget_angular/issues"
   },
-  "homepage": "https://github.com/trianglejuice/chatbot_widget_angular#readme",
+  "homepage": "https://github.com/digipolisantwerp/chatbot_widget_angular#readme",
   "keywords": [
     "angular",
     "library",

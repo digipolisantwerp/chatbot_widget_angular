@@ -28,7 +28,6 @@ const mockError = {
 class MockChatbotService {
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
     return Observable.of([mockData]);
-    // return Observable.throw(mockError);
   }
 }
 
@@ -108,8 +107,9 @@ describe('Chatbot widget', () => {
 
     it('should send a message', () => {
       fixture.detectChanges();
-      component.message = mockData;
-      component.sendMessage();
+      spyOn(component, 'addToChat');
+      component.sendReply(mockData);
+      expect(component.addToChat).toHaveBeenCalled();
     });
 
     it('should toggle its visibility', () => {
@@ -123,18 +123,28 @@ describe('Chatbot widget', () => {
 
     it('should send a reply when a button is clicked', () => {
       fixture.detectChanges();
-      spyOn(component, 'sendMessage').and.callThrough();
+      spyOn(component, 'addToChat').and.callThrough();
+      spyOn(chatbotService, 'sendMessage').and.callThrough();
       component.sendReply(mockData);
-      expect(component.sendMessage).toHaveBeenCalled();
+      expect(chatbotService.sendMessage).toHaveBeenCalled();
+      expect(component.addToChat).toHaveBeenCalled();
     });
 
-    // it('should return an error', () => {
-    //   component.url = '/mockErrorUrl';
-    //   fixture.detectChanges();
-    //   spyOn(component, 'sendMessage').and.returnValue(Observable.throw(mockError));
-    //   component.sendReply(mockData);
-    //   expect(component.sendMessage).toHaveBeenCalled();
-    // });
-  });
+    it('should return an error', () => {
+      fixture.detectChanges();
+      spyOn(component, 'pushError').and.callThrough();
+      spyOn(chatbotService, 'sendMessage').and.returnValue(Observable.throw(mockError));
+      component.sendReply(mockData);
+      expect(chatbotService.sendMessage).toHaveBeenCalled();
+      expect(component.pushError).toHaveBeenCalled();
+    });
 
+    it('should do nothing when there is no message', () => {
+      fixture.detectChanges();
+      mockData.message = '';
+      spyOn(chatbotService, 'sendMessage').and.callThrough();
+      component.sendReply(mockData);
+      expect(chatbotService.sendMessage).not.toHaveBeenCalled();
+    });
+  });
 });

@@ -123,7 +123,7 @@ describe('Chatbot widget', () => {
 
     it('should send a reply when a button is clicked', () => {
       fixture.detectChanges();
-      spyOn(component, 'addToChat').and.callThrough();
+      spyOn(component, 'addToChat');
       spyOn(chatbotService, 'sendMessage').and.callThrough();
       component.sendReply(mockData);
       expect(chatbotService.sendMessage).toHaveBeenCalled();
@@ -132,7 +132,7 @@ describe('Chatbot widget', () => {
 
     it('should return an error', () => {
       fixture.detectChanges();
-      spyOn(component, 'pushError').and.callThrough();
+      spyOn(component, 'pushError');
       spyOn(chatbotService, 'sendMessage').and.returnValue(Observable.throw(mockError));
       component.sendReply(mockData);
       expect(chatbotService.sendMessage).toHaveBeenCalled();

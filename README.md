@@ -58,7 +58,7 @@ In the index.html, include the core branding stylesheet:
 `string` BFF URL.
 
 #### **session**
-`string` Required session ID to easily retrieve the chat history if necessary.
+`string` Required session ID for the chatbot engine, where each chat conversation is linked to its chat session. It's important to use a unique id, since all session data, like answers already given, are stored in the chatbot engine.
 
 #### **title**
 `string` Title above the chat window.

@@ -67,13 +67,17 @@ describe('Chatbot widget', () => {
 
   it('should create an empty message on init', () => {
     component.session = 'TestSession';
+    spyOn(component, 'addToChat');
+    spyOn(component, 'sendMessage');
     component.ngOnInit();
     expect(component.message).toEqual({
       session_id: 'TestSession',
-      message: '',
+      message: ' ',
       type: 'text',
       send: true,
     });
+    expect(component.sendMessage).toHaveBeenCalled();
+    expect(component.addToChat).not.toHaveBeenCalled();
   });
 
   describe('Private functions', () => {

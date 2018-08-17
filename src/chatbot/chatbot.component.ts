@@ -58,10 +58,8 @@ export class ChatbotComponent implements OnInit {
     };
 
     // Request opening message from chatbot
-    // This can't be empty, so we trigger it by sending a space
+    // This can not be empty, so we trigger it by sending a space
     this.sendMessage(true);
-
-    // In a later stage, you may want to retrieve the conversation history here.
   }
 
   public sendMessage(hide = false): void {
@@ -96,7 +94,9 @@ export class ChatbotComponent implements OnInit {
     this.message.message = '';
 
     // Focus
-    this.messageInput.nativeElement.focus();
+    if (this.messageInput && this.messageInput.nativeElement) {
+      this.messageInput.nativeElement.focus();
+    }
   }
 
   public sendReply(event: any): void {

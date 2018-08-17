@@ -52,10 +52,11 @@ export class ChatbotComponent implements OnInit {
   public ngOnInit(): void {
     this.message = {
       session_id: this.session,
-      message: '',
+      message: ' ',
       type: 'text',
       send: true,
     };
+    this.sendMessage();
     // In a later stage, you may want to retrieve the conversation history here.
   }
 

@@ -56,18 +56,24 @@ export class ChatbotComponent implements OnInit {
       type: 'text',
       send: true,
     };
-    this.sendMessage();
+
+    // Request opening message from chatbot
+    // This can't be empty, so we trigger it by sending a space
+    this.sendMessage(true);
+
     // In a later stage, you may want to retrieve the conversation history here.
   }
 
-  public sendMessage(): void {
+  public sendMessage(hide = false): void {
     if (!this.message.message) { return; }
 
     // Start loader
     this.isLoading = true;
 
     // Add to data
-    this.addToChat(this.message);
+    if (!hide) {
+      this.addToChat(this.message);
+    }
 
     // Send new data
     this.chatbotService.sendMessage(this.url, this.message)

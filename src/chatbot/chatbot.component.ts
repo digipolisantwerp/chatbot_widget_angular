@@ -52,21 +52,26 @@ export class ChatbotComponent implements OnInit {
   public ngOnInit(): void {
     this.message = {
       session_id: this.session,
-      message: '',
+      message: ' ',
       type: 'text',
       send: true,
     };
-    // In a later stage, you may want to retrieve the conversation history here.
+
+    // Request opening message from chatbot
+    // This can not be empty, so we trigger it by sending a space
+    this.sendMessage(true);
   }
 
-  public sendMessage(): void {
+  public sendMessage(hide = false): void {
     if (!this.message.message) { return; }
 
     // Start loader
     this.isLoading = true;
 
     // Add to data
-    this.addToChat(this.message);
+    if (!hide) {
+      this.addToChat(this.message);
+    }
 
     // Send new data
     this.chatbotService.sendMessage(this.url, this.message)
@@ -89,7 +94,9 @@ export class ChatbotComponent implements OnInit {
     this.message.message = '';
 
     // Focus
-    this.messageInput.nativeElement.focus();
+    if (this.messageInput && this.messageInput.nativeElement) {
+      this.messageInput.nativeElement.focus();
+    }
   }
 
   public sendReply(event: any): void {

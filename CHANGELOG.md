@@ -11,9 +11,16 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [1.1.0] - 2018-08-20
+
+### Added
+- Send empty message on init to automatically activate chatbot
+
+
 ## [1.0.0] - 2018-06-13
 - Initial release.
 
 
 [Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v0.0.1...v1.0.0

@@ -52,7 +52,7 @@ export class ChatbotComponent implements OnInit {
   public ngOnInit(): void {
     this.message = {
       session_id: this.session,
-      message: ' ',
+      message: 'STARTCOMMANDO',
       type: 'text',
       send: true,
     };

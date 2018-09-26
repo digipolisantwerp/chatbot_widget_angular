@@ -58,7 +58,7 @@ export class ChatbotComponent implements OnInit {
     };
 
     // Request opening message from chatbot
-    // This can not be empty, so we trigger it by sending a space
+    // This can not be empty, so we trigger it by sending the special message 'STARTCOMMANDO'
     this.sendMessage(true);
   }
 

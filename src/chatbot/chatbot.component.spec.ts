@@ -72,7 +72,7 @@ describe('Chatbot widget', () => {
     component.ngOnInit();
     expect(component.message).toEqual({
       session_id: 'TestSession',
-      message: ' ',
+      message: 'STARTCOMMANDO',
       type: 'text',
       send: true,
     });

@@ -52,13 +52,13 @@ export class ChatbotComponent implements OnInit {
   public ngOnInit(): void {
     this.message = {
       session_id: this.session,
-      message: ' ',
+      message: 'STARTCOMMANDO',
       type: 'text',
       send: true,
     };
 
     // Request opening message from chatbot
-    // This can not be empty, so we trigger it by sending a space
+    // This can not be empty, so we trigger it by sending the special message 'STARTCOMMANDO'
     this.sendMessage(true);
   }
 

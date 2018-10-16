@@ -23,11 +23,24 @@ const mockError = {
   }
 };
 
-const mockResponse = {
+const mockResponse1 = {
   data: [{
     message: 'Hello from chatbot',
     type: 'text',
   }],
+};
+
+const mockResponse2 = {
+  data: [{
+    message: 'Hello again from chatbot',
+    type: 'text',
+  }],
+  quickReplies: [
+    {
+      text: 'some text',
+      action: 'some action',
+    }
+  ]
 };
 
 describe('ChatbotService', () => {
@@ -50,10 +63,23 @@ describe('ChatbotService', () => {
 
   it('should get response via http request', (done) => {
     chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
-      expect(result).toEqual(mockResponse['data']);
+      expect(result).toEqual(mockResponse1['data']);
+      expect(result.length).toEqual(1);
       done();
     });
-    httpMock.expectOne('/mockUrl').flush(mockResponse);
+    httpMock.expectOne('/mockUrl').flush(mockResponse1);
+    httpMock.verify();
+  });
+
+  it('should reformat the data when quick replies are present', (done) => {
+    chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
+      expect(result).toEqual(mockResponse2['data']);
+      expect(result.length).toEqual(2);
+      expect(result[1]['type']).toEqual('radio');
+      expect(result[1]['elements']['replyText']).toEqual(mockResponse2['quickReplies']['some action']);
+      done();
+    });
+    httpMock.expectOne('/mockUrl').flush(mockResponse2);
     httpMock.verify();
   });
 

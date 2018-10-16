@@ -21,9 +21,26 @@ export class ChatbotService {
   ) {}
 
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
-
     return this.http.post(url, message)
-      .map(result => result['data'])
+      .map(result => {
+        /**
+         * Quick replies used to be part of the result['data'] array (chatbot engine v1)
+         * The following code makes sure our widget gets the data (chatbot engine v2) in the same format as before
+         */
+        if (result['quickReplies']) {
+          result['data'].push({
+            type: 'radio',
+            message: '',
+            elements: result['quickReplies'].map((item) => {
+              return {
+                text: item.text,
+                replyText: item.action
+              };
+            }),
+          });
+        }
+        return result['data'];
+      })
       .catch((error: any) => Observable.throw(error));
   }
 

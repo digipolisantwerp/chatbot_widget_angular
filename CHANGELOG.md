@@ -11,6 +11,10 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+### Fixed
+- Fixed the widget not showing quick replies anymore
+
+
 ## [1.1.2] - 2018-09-26
 
 ### Changed

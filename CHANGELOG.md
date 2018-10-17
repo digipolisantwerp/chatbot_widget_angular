@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [1.1.3] - 2018-10-17
+
 ### Fixed
 - Fixed the widget not showing quick replies anymore
 
@@ -37,7 +39,8 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.0.0...v1.1.0

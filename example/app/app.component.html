@@ -5,7 +5,7 @@
   <div class="main u-margin-top-lg">
     <aui-chatbot
       [url]="'http://localhost:3000/api/chatbot'"
-      [session]="'1234'"
+      [session]="session1"
       [title]="'My chatbot'"
       [placeholder]="'Type your message here…'"
       [pinned]="false"
@@ -15,8 +15,8 @@
   </div>
   <div class="main u-margin-top-lg">
     <aui-chatbot
-      [url]="'http://localhost:3000/api/chatbot/afvalstickers'"
-      [session]="'abcd'"
+      [url]="'http://localhost:3000/api/chatbot'"
+      [session]="session2"
       [placeholder]="'Typ hier iets anders…'"
       [pinned]="true">
     </aui-chatbot>

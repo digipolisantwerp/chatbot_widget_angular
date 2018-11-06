@@ -70,6 +70,8 @@ If possible, do provide meaningful and clean commit messages. A [good commit mes
 
 ### Publishing
 
+> Only the ACPaaS UI team publishes new packages. [Contact us](https://acpaas-ui.digipolis.be/contact) if you need a new release published.
+
 Follow these steps to publish a new version of the package.
 You must have a Digipolis account with access to Nexus.
 

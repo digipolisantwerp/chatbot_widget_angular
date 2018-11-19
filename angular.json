@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "starter-kit_widget_angular": {
+    "chatbot_widget_angular": {
       "root": "",
       "sourceRoot": "example",
       "projectType": "application",

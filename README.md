@@ -12,10 +12,6 @@ There is a demo app, see below for instructions on running it.
 
 ### Installing
 
-Copy the .npmrc file from this repo to your local repo to set up the link to nexusrepo.antwerpen.be npm repository.
-
-Then install (you will need to be connected to the Digipolis network):
-
 ```sh
 > npm install @acpaas-ui-widgets/ngx-chatbot
 ```
@@ -35,7 +31,7 @@ Import the component in your module:
 In the index.html, include the core branding stylesheet:
 
 ```html
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/2.1.1/main.min.css">
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/3.0.3/main.min.css">
 ```
 
 ### In your template
@@ -77,8 +73,6 @@ In the index.html, include the core branding stylesheet:
 
 
 ## Run the demo app
-
-Set up the .npmrc (see above), then run:
 
 ```sh
 > npm install

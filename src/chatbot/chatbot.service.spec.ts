@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 
 import { ChatbotService } from './chatbot.service';
 import {
@@ -88,7 +88,7 @@ describe('ChatbotService', () => {
       (result: any) => {
       },
       (error: any) => {
-        expect(Observable.of(error)).toBeTruthy();
+        expect(of(error)).toBeTruthy();
         expect(error).toBeTruthy();
         done();
       },

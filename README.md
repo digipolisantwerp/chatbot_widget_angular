@@ -37,7 +37,7 @@ In the index.html, include the core branding stylesheet:
 > For projects that are still using Angular 5, we are [maintaining a v1 branch](https://github.com/digipolisantwerp/chatbot_widget_angular/tree/v1), which will still receive bug fixes if needed.
 
 ```sh
-> npm install @acpaas-ui-widgets/ngx-chatbot@"<2.0.0
+> npm install @acpaas-ui-widgets/ngx-chatbot@"<2.0.0"
 ```
 
 ### In your template

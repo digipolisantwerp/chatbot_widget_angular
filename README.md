@@ -33,11 +33,10 @@ In the index.html, include the core branding stylesheet:
 ```html
 <link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/3.0.3/main.min.css">
 ```
-
-> If your project uses Angular 5, you can still install the older version of the widget and [take a look at its documentation here](https://github.com/digipolisantwerp/chatbot_widget_angular/blob/v1.1.3/README.md):
+> For projects that are still using Angular 5, we are [maintaining a v1 branch](https://github.com/digipolisantwerp/chatbot_widget_angular/tree/v1), which will still receive bug fixes if needed.
 
 ```sh
-> npm install @acpaas-ui-widgets/ngx-chatbot@1.1.3
+> npm install @acpaas-ui-widgets/ngx-chatbot@"<2.0.0
 ```
 
 ### In your template

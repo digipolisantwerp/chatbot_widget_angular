@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { ChatbotService } from './chatbot/chatbot.service';
-import { Components } from './components';
+import { Components } from './components/root';
 
 @NgModule({
   imports: [

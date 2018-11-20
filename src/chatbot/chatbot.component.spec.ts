@@ -2,7 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import {
+  of,
+  throwError,
+} from 'rxjs';
 
 import { ChatbotModule } from '..';
 import { ChatbotComponent } from './chatbot.component';
@@ -27,7 +30,7 @@ const mockError = {
 
 class MockChatbotService {
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
-    return Observable.of([mockData]);
+    return of([mockData]);
   }
 }
 
@@ -137,7 +140,7 @@ describe('Chatbot widget', () => {
     it('should return an error', () => {
       fixture.detectChanges();
       spyOn(component, 'pushError');
-      spyOn(chatbotService, 'sendMessage').and.returnValue(Observable.throw(mockError));
+      spyOn(chatbotService, 'sendMessage').and.returnValue(throwError(mockError));
       component.sendReply(mockData);
       expect(chatbotService.sendMessage).toHaveBeenCalled();
       expect(component.pushError).toHaveBeenCalled();

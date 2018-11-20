@@ -33,6 +33,17 @@
                   "with": "example/config/environment.prod.ts"
                 }
               ]
+            },
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
             }
           }
         },
@@ -44,6 +55,9 @@
           "configurations": {
             "prod": {
               "browserTarget": "chatbot_widget_angular:build:prod"
+            },
+            "production": {
+              "browserTarget": "chatbot_widget_angular:build:production"
             }
           }
         },
@@ -84,29 +98,29 @@
         }
       }
     },
-    // "chatbot_widget_angular-e2e": {
-    //   "root": "",
-    //   "sourceRoot": "",
-    //   "projectType": "application",
-    //   "architect": {
-    //     "e2e": {
-    //       "builder": "@angular-devkit/build-angular:protractor",
-    //       "options": {
-    //         "protractorConfig": "./protractor.conf.js",
-    //         "devServerTarget": "chatbot_widget_angular:serve"
-    //       }
-    //     },
-    //     "lint": {
-    //       "builder": "@angular-devkit/build-angular:tslint",
-    //       "options": {
-    //         "tsConfig": [],
-    //         "exclude": [
-    //           "**/node_modules/**"
-    //         ]
-    //       }
-    //     }
-    //   }
-    // }
+    "chatbot_widget_angular-e2e": {
+      "root": "e2e",
+      "sourceRoot": "e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "chatbot_widget_angular:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
   },
   "defaultProject": "chatbot_widget_angular",
   "schematics": {
@@ -114,11 +128,11 @@
       "spec": false
     },
     "@schematics/angular:component": {
-      "prefix": "aui",
+      "prefix": "app",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "aui"
+      "prefix": "app"
     }
   }
 }

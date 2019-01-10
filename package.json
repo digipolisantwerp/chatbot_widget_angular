@@ -5,7 +5,7 @@
     "name": "Jasper Van Proeyen",
     "email": "jasper.vanproeyen@digipolis.be"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "main": "src/index.ts",
   "scripts": {

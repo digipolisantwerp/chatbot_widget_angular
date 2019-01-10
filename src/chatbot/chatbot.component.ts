@@ -122,8 +122,10 @@ export class ChatbotComponent implements OnInit {
   }
 
   private pushError(error): void {
+    const theError = (typeof error !== 'undefined') ?
+      'Error ' + error.status + ' - ' + error.statusText + ': ' + error.error.title : 'Error';
     const errorMessage: ChatbotMessage = {
-      message: 'Error ' + error.status + ' - ' + error.statusText + ': ' + error.error.title,
+      message: theError,
       type: 'error',
     };
     this.addToChat(errorMessage);

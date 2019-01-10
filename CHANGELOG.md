@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [2.0.1] - 2019-01-10
+
+### Changed
+- Upgraded the widget to be compatible with rxjs 6 without the use of rxjs-compat
+
+
 ## [2.0.0] - 2018-11-19
 
 ### Changed
@@ -46,7 +52,8 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.3...v2.0.0
 [1.1.3]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.1...v1.1.2

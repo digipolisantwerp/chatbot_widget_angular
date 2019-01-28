@@ -12,6 +12,13 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [2.0.2] - 2019-01-28
+
+### Fixed
+- Fixed an issue where words were unnecessary split in two
+- Fixed margin between reply buttons
+
+
 ## [2.0.1] - 2019-01-10
 
 ### Changed

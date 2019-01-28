@@ -6,7 +6,6 @@
     margin: 0 $spacer $spacer-sm 0;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    word-break: break-all;
     word-break: break-word;
     hyphens: auto;
 
@@ -17,7 +16,7 @@
 
     .a-button {
       display: inline-block;
-      margin-bottom: $spacer-xs / 2;
+      margin: 0 $spacer-xs / 4 $spacer-xs / 2;
       width: auto;
     }
   }

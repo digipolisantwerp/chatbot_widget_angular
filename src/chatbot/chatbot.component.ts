@@ -37,8 +37,11 @@ export class ChatbotComponent implements OnInit {
   // Delay between multiple messages received from the chatbot engine
   @Input() delay = 400;
 
-  // Height of the chatbot in pixels
+  // Height of the chatbot in pixels, only to use when the chatbot is not pinned
   @Input() height = 400;
+
+  // Width of the chatbot in pixels, only to use when the chatbot is pinned
+  @Input() width = 288;
 
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;

@@ -1,4 +1,4 @@
-<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}" [ngStyle]="{'height':!pinned ? height + 'px' : '' }">
+<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}" [ngStyle]="{'height':!pinned ? height + 'px' : '', 'width':pinned ? width + 'px' : ''}">
   <div class="o-chatbot__content" *ngIf="!pinned || (pinned && isOpen)">
     <div class="o-chatbot__header u-bg-primary u-text-xlight" [ngClass]="{'o-chatbot__header--no-title': !title}">
       <h1 class="h6 has-base-font u-text-bold u-margin-xs" *ngIf="title">{{ title }}</h1>

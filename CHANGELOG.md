@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [2.1.0] - 2019-01-28
+
+### Added
+- Added an option to override the width of a pinned chatbot
+
+
 ## [2.0.3] - 2019-01-28
 
 ### Fixed
@@ -62,7 +68,10 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.3...v2.1.0
+[2.0.3]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.2...v2.0.3
+[2.0.2]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.3...v2.0.0
 [1.1.3]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v1.1.2...v1.1.3

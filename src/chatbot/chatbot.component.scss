@@ -82,7 +82,7 @@
       min-width: $spacer * 12;
     }
 
-    @include to($screen-xs-max) {
+    @include to(29.9375rem) {
       width: auto !important; // This is needed in order to override a custom defined width
     }
   }

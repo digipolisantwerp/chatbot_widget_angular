@@ -79,7 +79,11 @@
 
     @include at($screen-xs) {
       left: auto;
-      width: $spacer * 12;
+      min-width: $spacer * 12;
+    }
+
+    @include to(29.9375rem) {
+      width: auto !important; // This is needed in order to override a custom defined width
     }
   }
 }

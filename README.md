@@ -75,7 +75,10 @@ In the index.html, include the core branding stylesheet:
 `number` Delay between multiple messages received from the chatbot engine.
 
 #### **height**
-`number` Height of the chatbot in pixels.
+`number` Height of the chatbot in pixels. Can only be used when `pinned="false"`.
+
+#### **width**
+`number` Width of the chatbot in pixels. Can only be used when `pinned="true"`. Will not be smaller than `18rem`.
 
 
 ## Run the demo app

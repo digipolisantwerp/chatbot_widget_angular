@@ -12,6 +12,10 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+### Fixed
+- Fixed unexpected exception when the chatbot engine responds with 403
+
+
 ## [2.1.0] - 2019-01-28
 
 ### Added

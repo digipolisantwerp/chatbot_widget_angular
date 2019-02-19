@@ -26,9 +26,18 @@
    */
 
   &__text,
+  &__image,
   &__url {
     background-color: $grey-lighter;
     padding: $spacer-xs $spacer-sm;
+  }
+
+  &__image {
+    padding: $spacer-sm;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   &__error {

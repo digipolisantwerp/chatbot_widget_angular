@@ -17,6 +17,7 @@ import {
 
 export class MessageComponent {
   @Input() data: ChatbotMessage;
+  @Input() imgText: string;
   @Output() replyClicked = new EventEmitter<any>();
 
   public sendReply(message: ChatbotMessageButton): void {

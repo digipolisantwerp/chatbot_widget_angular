@@ -12,6 +12,9 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+
+## [2.1.1] - 2019-02-19
+
 ### Fixed
 - Fixed unexpected exception when the chatbot engine responds with 403
 - Made sure that larger images always fit within the viewport width
@@ -73,7 +76,8 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.1...HEAD
+[2.1.1]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.1...v2.0.2

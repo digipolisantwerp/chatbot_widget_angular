@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Fixed unexpected exception when the chatbot engine responds with 403
+- Made sure that larger images always fit within the viewport width
 
 
 ## [2.1.0] - 2019-01-28

@@ -24,8 +24,16 @@ const mockError = {
   status: '401',
   statusText: 'Unauthorized',
   error: {
-    title: 'Please login first!'
-  }
+    error: 'Some error occurred',
+    title: 'Please login first!',
+  },
+};
+
+const wrongFormatMockError = {
+  status: '401',
+  statusText: 'Unauthorized',
+  error: 'Error in the wrong format',
+  title: 'Please login first!',
 };
 
 class MockChatbotService {
@@ -105,6 +113,30 @@ describe('Chatbot widget', () => {
         type: 'text',
       }, {
         message: 'Error 401 - Unauthorized: Please login first!',
+        type: 'error',
+      }]);
+    });
+
+    it('should add an error to the chat, even in the wrong format', () => {
+      component.data = [mockData];
+      component.pushError(wrongFormatMockError);
+      expect(component.data).toEqual([{
+        message: 'Hello',
+        type: 'text',
+      }, {
+        message: 'Error 401 - Unauthorized: Please login first!',
+        type: 'error',
+      }]);
+    });
+
+    it('should add a fallback error to the chat, in case no error was specified', () => {
+      component.data = [mockData];
+      component.pushError();
+      expect(component.data).toEqual([{
+        message: 'Hello',
+        type: 'text',
+      }, {
+        message: 'Error',
         type: 'error',
       }]);
     });

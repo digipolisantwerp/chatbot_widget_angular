@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 ## [2.1.2] - 2019-02-27
 
 ### Fixed
-- Now the complete URL is shown in case no message is defined
+- Fixed a possible empty URL message
 
 
 ## [2.1.1] - 2019-02-19

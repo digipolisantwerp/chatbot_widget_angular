@@ -37,7 +37,7 @@ describe('MessageComponent', () => {
       expect(fixture.nativeElement.querySelector('.m-message__text').innerText).toEqual('Hello');
     });
 
-    it('should render a url', () => {
+    it('should render the message of a url', () => {
       component.data = {
         'message': 'Digipolis',
         'type': 'url',
@@ -46,6 +46,16 @@ describe('MessageComponent', () => {
       fixture.detectChanges();
       expect(fixture.nativeElement.querySelector('.m-message__url a').getAttribute('href')).toEqual('https://www.digipolis.be');
       expect(fixture.nativeElement.querySelector('.m-message__url a').innerText).toEqual('Digipolis');
+    });
+
+    it('should render the url if no message is provided', () => {
+      component.data = {
+        'type': 'url',
+        'url': 'https://www.digipolis.be',
+      };
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.m-message__url a').getAttribute('href')).toEqual('https://www.digipolis.be');
+      expect(fixture.nativeElement.querySelector('.m-message__url a').innerText).toEqual('https://www.digipolis.be');
     });
 
     it('should render an image', () => {

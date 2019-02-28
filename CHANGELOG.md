@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 -->
 
 
+## [2.1.2] - 2019-02-27
+
+### Fixed
+- Fixed a possible empty URL message
+
+
 ## [2.1.1] - 2019-02-19
 
 ### Fixed
@@ -76,7 +82,8 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.2...HEAD
+[2.1.2]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.0.2...v2.0.3

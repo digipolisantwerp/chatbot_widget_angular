@@ -82,6 +82,9 @@ export class ChatbotComponent implements OnInit {
         (result: ChatbotConversation) => {
           result.forEach((item: ChatbotMessage, index) => {
             setTimeout(() => {
+              if (index === 0) {
+                item.avatar = true;
+              }
               this.addToChat(item);
             }, index * this.delay);
           });

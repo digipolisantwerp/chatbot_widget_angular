@@ -10,6 +10,9 @@
           <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)"></aui-chatbot-message>
         </ng-container>
         <div *ngIf="isLoading" class="o-chatbot__loader">
+          <div class="a-avatar a-avatar--small">
+            <img src="assets/a-chat.svg" alt="Avatar">
+          </div>
           <span>...</span>
         </div>
       </div>
@@ -17,7 +20,7 @@
     <div class="o-chatbot__footer u-bg-light">
       <div class="o-chatbot__input a-input u-margin-xs">
         <input type="text" id="chat-input" name="chat-input" autocomplete="off" #messageInput [placeholder]="placeholder" [(ngModel)]="message.message" (keyup.enter)="sendMessage()" />
-        <button class="a-button-transparent has-icon" (click)="sendMessage()">
+        <button type="submit" class="a-button-transparent has-icon" (click)="sendMessage()">
           <i class="fa fa-send"></i>
         </button>
       </div>

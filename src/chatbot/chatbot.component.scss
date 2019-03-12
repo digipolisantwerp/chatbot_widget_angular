@@ -38,11 +38,12 @@
   }
 
   &__loader {
+    display: flex;
+
     span {
-      display: inline-block;
+      color: $grey;
       font-size: 2rem;
-      height: $spacer;
-      margin-bottom: $spacer-sm;
+      margin-left: $spacer-xs / 2;
     }
   }
 
@@ -84,6 +85,17 @@
 
     @include to(29.9375rem) {
       width: auto !important; // This is needed in order to override a custom defined width
+    }
+  }
+}
+
+:host ::ng-deep {
+  .a-avatar {
+    background: none;
+    flex: 0 0 auto;
+
+    + .m-message__content {
+      margin-left: $spacer-xs / 2; // 6px
     }
   }
 }

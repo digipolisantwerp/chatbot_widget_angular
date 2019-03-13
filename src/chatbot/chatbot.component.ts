@@ -43,9 +43,13 @@ export class ChatbotComponent implements OnInit {
   // Width of the chatbot in pixels, only to use when the chatbot is pinned
   @Input() width = 288;
 
+  // Avatar to display
+  @Input() avatar = 'https://cdn.antwerpen.be/core_branding_favicons/chatbot/a-chat.svg';
+
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;
   public isLoading = false;
+  public loadingIndex: number;
   public isOpen = false;
 
   constructor(
@@ -80,15 +84,20 @@ export class ChatbotComponent implements OnInit {
     this.chatbotService.sendMessage(this.url, this.message)
       .subscribe(
         (result: ChatbotConversation) => {
-          result.forEach((item: ChatbotMessage, index) => {
+          result.forEach((item: ChatbotMessage, index, res) => {
+            this.loadingIndex = index;
+            this.isLoading = true;
             setTimeout(() => {
               if (index === 0) {
-                item.avatar = true;
+                item.avatar = this.avatar;
               }
               this.addToChat(item);
+              if (index === res.length - 1) {
+                this.loadingIndex = null;
+                this.isLoading = false;
+              }
             }, index * this.delay);
           });
-          this.isLoading = false;
         },
         error => {
           this.pushError(error);

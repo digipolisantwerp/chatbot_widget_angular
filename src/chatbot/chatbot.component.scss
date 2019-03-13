@@ -43,6 +43,10 @@
     span {
       color: $grey;
       font-size: 2rem;
+      margin-left: $spacer-xs / 2 * 7;
+    }
+
+    .a-avatar + span {
       margin-left: $spacer-xs / 2;
     }
   }
@@ -52,10 +56,14 @@
   }
 
   &__input {
-    display: flex;
+    margin: -1px;
+    padding-right: $spacer-lg;
+    position: relative;
 
-    input {
-      flex: 1 1 auto;
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 

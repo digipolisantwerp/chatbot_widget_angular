@@ -5,23 +5,23 @@
       <button class="a-button has-icon" *ngIf="pinned" (click)="toggleChatbot()"><i class="fa fa-close"></i></button>
     </div>
     <div class="o-chatbot__main" #chatbotMain [scrollTop]="chatbotMain.scrollHeight">
-      <div *ngIf="data && data.length > 0" class="u-margin-xs">
+      <div *ngIf="data && data.length > 0" class="u-margin-xs" aria-live="assertive">
         <ng-container *ngFor="let message of data">
           <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)"></aui-chatbot-message>
         </ng-container>
         <div *ngIf="isLoading" class="o-chatbot__loader">
-          <div class="a-avatar a-avatar--small">
-            <img src="assets/a-chat.svg" alt="Avatar">
+          <div class="a-avatar a-avatar--small" *ngIf="!loadingIndex">
+            <img [src]="avatar" alt="Avatar">
           </div>
           <span>...</span>
         </div>
       </div>
     </div>
-    <div class="o-chatbot__footer u-bg-light">
-      <div class="o-chatbot__input a-input u-margin-xs">
-        <input type="text" id="chat-input" name="chat-input" autocomplete="off" #messageInput [placeholder]="placeholder" [(ngModel)]="message.message" (keyup.enter)="sendMessage()" />
-        <button type="submit" class="a-button-transparent has-icon" (click)="sendMessage()">
-          <i class="fa fa-send"></i>
+    <div class="o-chatbot__footer">
+      <div class="o-chatbot__input a-input">
+        <input type="text" name="chat-input" autocomplete="off" #messageInput [placeholder]="placeholder" [(ngModel)]="message.message" (keyup.enter)="sendMessage()" />
+        <button type="submit" class="a-button has-icon" (click)="sendMessage()">
+          <i class="fa fa-send-o"></i>
         </button>
       </div>
     </div>

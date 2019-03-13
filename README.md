@@ -80,6 +80,9 @@ In the index.html, include the core branding stylesheet:
 #### **width**
 `number` Width of the chatbot in pixels. Can only be used when `pinned="true"`. Will not be smaller than `18rem`.
 
+#### **avatar**
+`string` Avatar image URL. Default is the special provided Antwerp icon.
+
 
 ## Run the demo app
 

@@ -30,7 +30,7 @@ export interface ChatbotMessage {
   url?: string;
   send?: boolean;
   hide?: boolean;
-  avatar?: boolean;
+  avatar?: string;
 }
 
 /**

@@ -38,7 +38,7 @@ const wrongFormatMockError = {
 
 class MockChatbotService {
   public sendMessage(url: string, message: ChatbotMessage): Observable<ChatbotConversation> {
-    return of([mockData]);
+    return of([mockData, mockData]);
   }
 }
 

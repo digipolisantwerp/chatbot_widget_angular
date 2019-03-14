@@ -1,9 +1,15 @@
 @import '~@a-ui/core/dist/assets/styles/_quarks.scss';
 
+$border-radius: $spacer-xs;
+
 .m-message {
+  align-items: flex-start;
+  display: flex;
+  margin: 0 $spacer 0 0;
+
   &__content {
     display: flex;
-    margin: 0 $spacer $spacer-sm 0;
+    margin: 0 0 $spacer-xs $spacer-xs / 2 * 7; // 0 0 12px 42px
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -29,11 +35,13 @@
   &__image,
   &__url {
     background-color: $grey-lighter;
-    padding: $spacer-xs $spacer-sm;
+    border-radius: $border-radius;
+    border-bottom-left-radius: 0;
+    padding: $spacer-xs / 6 * 5 $spacer-sm / 9 * 7; // 10px 14px
   }
 
   &__image {
-    padding: $spacer-sm;
+    padding: $spacer-sm / 9 * 7;
 
     img {
       max-width: 100%;
@@ -42,7 +50,7 @@
 
   &__error {
     background-color: mix($state-danger, $white, 10%);
-    padding: $spacer-xs $spacer-sm;
+    padding: $spacer-xs / 6 * 5 $spacer-sm / 9 * 7; // 10px 14px => min-height = 36px
   }
 
   &__radio {
@@ -52,18 +60,33 @@
   /**
    * Modifiers
    */
-  .m-message--center {
+  &--center {
     justify-content: center;
+    margin: 0;
     text-align: center;
   }
 
-  .m-message--right {
+  &--right {
     justify-content: flex-end;
-    margin: 0 0 $spacer-sm $spacer;
-    text-align: center;
+    margin: 0 0 0 $spacer;
+    text-align: left;
 
     .m-message__text {
       background-color: mix($brand-primary, $white, 10%);
+    }
+
+    .m-message__text,
+    .m-message__image,
+    .m-message__url {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &--center,
+  &--left {
+    .m-message__content {
+      margin-left: 0;
     }
   }
 }

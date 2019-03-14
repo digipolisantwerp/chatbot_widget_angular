@@ -38,11 +38,16 @@
   }
 
   &__loader {
+    display: flex;
+
     span {
-      display: inline-block;
+      color: $grey;
       font-size: 2rem;
-      height: $spacer;
-      margin-bottom: $spacer-sm;
+      margin-left: $spacer-xs / 2 * 7;
+    }
+
+    .a-avatar + span {
+      margin-left: $spacer-xs / 2;
     }
   }
 
@@ -51,10 +56,14 @@
   }
 
   &__input {
-    display: flex;
+    margin: -1px;
+    padding-right: $spacer-lg;
+    position: relative;
 
-    input {
-      flex: 1 1 auto;
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 
@@ -84,6 +93,17 @@
 
     @include to(29.9375rem) {
       width: auto !important; // This is needed in order to override a custom defined width
+    }
+  }
+}
+
+:host ::ng-deep {
+  .a-avatar {
+    background: none;
+    flex: 0 0 auto;
+
+    + .m-message__content {
+      margin-left: $spacer-xs / 2; // 6px
     }
   }
 }

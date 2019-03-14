@@ -13,6 +13,15 @@ All notable changes to this project will be documented in this file.
 -->
 
 
+## [2.2.0] - 2019-03-13
+
+### Added
+- Added a persona to the chatbot that can be overridden by the user.
+
+### Changed
+- Changed the behaviour of the loading state
+
+
 ## [2.1.2] - 2019-02-27
 
 ### Fixed

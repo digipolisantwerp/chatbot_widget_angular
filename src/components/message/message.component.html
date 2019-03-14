@@ -1,7 +1,12 @@
-<div class="m-message" *ngIf="!data.hide">
-  <div [ngSwitch]="data.type" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio' || data.type === 'error'}" class="m-message__content">
+<div class="m-message" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio' || data.type === 'error'}" *ngIf="!data.hide">
 
-    <span *ngSwitchCase="'text'" class="m-message__text">
+  <div *ngIf="!data.send && data.avatar" class="a-avatar a-avatar--small">
+    <img [src]="data.avatar" alt="Avatar.">
+  </div>
+
+  <div [ngSwitch]="data.type" class="m-message__content">
+
+    <span *ngSwitchCase="'text'" class="m-message__text" tabindex="0">
       {{ data.message }}
     </span>
 
@@ -10,8 +15,8 @@
       <a *ngIf="!data.message" [href]="data.url" target="_blank" rel="external">{{ data.url }}</a>
     </span>
 
-    <span *ngSwitchCase="'image'" class="m-message__image">
-      <img [src]="data.image">
+    <span *ngSwitchCase="'image'" class="m-message__image" tabindex="0">
+      <img [src]="data.image" alt="Image.">
     </span>
 
     <span *ngSwitchCase="'radio'" class="m-message__radio">
@@ -20,7 +25,7 @@
       </ng-container>
     </span>
 
-    <span *ngSwitchCase="'error'" class="m-message__error u-text-danger">
+    <span *ngSwitchCase="'error'" class="m-message__error u-text-danger" tabindex="0">
       {{ data.message }}
     </span>
 

@@ -4,7 +4,7 @@ With the chatbot smart widget you can simply implement a chatbot in any page.
 
 You will also need the BFF package in order to get the chatbot smart widget to work: [http://github.com/TriangleJuice/chatbot_service_nodejs](http://github.com/TriangleJuice/chatbot_service_nodejs)
 
-<img src="screenshot.png" alt="Chatbot screenshot" width="410" style="max-width:410px;width:100%">
+<img src="screenshot.png" alt="Chatbot screenshot" width="308" style="max-width:100%;width:100%">
 
 There is a demo app, see below for instructions on running it.
 
@@ -46,7 +46,7 @@ In the index.html, include the core branding stylesheet:
 <aui-chatbot
   url="http://localhost:3000/api/bff"
   session="123456789"
-  title="My chatbot"
+  title="My great chatbot widget"
   placeholder="Type your message here…"
   [pinned]="false"
   [delay]="200"

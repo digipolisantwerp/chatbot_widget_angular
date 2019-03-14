@@ -69,7 +69,7 @@ $border-radius: $spacer-xs;
   &--right {
     justify-content: flex-end;
     margin: 0 0 0 $spacer;
-    text-align: center;
+    text-align: left;
 
     .m-message__text {
       background-color: mix($brand-primary, $white, 10%);

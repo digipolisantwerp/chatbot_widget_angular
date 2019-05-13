@@ -1,4 +1,4 @@
-<div class="m-message" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'quickReply' || data.type === 'error'}" *ngIf="!data.hide">
+<div class="m-message" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'quickReply' || data.type === 'error' || data.type === 'action'}" *ngIf="!data.hide">
   <div *ngIf="!data.send && data.avatar" class="a-avatar a-avatar--small">
     <img [src]="data.avatar" alt="Avatar.">
   </div>

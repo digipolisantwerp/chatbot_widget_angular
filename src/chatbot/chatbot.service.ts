@@ -34,7 +34,7 @@ export class ChatbotService {
            */
           if (result['quickReplies']) {
             result['data'].push({
-              type: 'radio',
+              type: 'quickReply',
               message: '',
               elements: result['quickReplies'].map((item) => {
                 return {

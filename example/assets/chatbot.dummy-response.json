@@ -22,7 +22,7 @@
                     "replyText": "No, me!"
                 }
             ],
-            "type": "radio"
+            "type": "quickReply"
         }
     ],
     "id": 193617,

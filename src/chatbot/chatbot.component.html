@@ -7,7 +7,7 @@
     <div class="o-chatbot__main" #chatbotMain [scrollTop]="chatbotMain.scrollHeight">
       <div *ngIf="data && data.length > 0" class="u-margin-xs" aria-live="assertive">
         <ng-container *ngFor="let message of data">
-          <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)"></aui-chatbot-message>
+          <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)" (actionClicked)="performAction($event)"></aui-chatbot-message>
         </ng-container>
         <div *ngIf="isLoading" class="o-chatbot__loader">
           <div class="a-avatar a-avatar--small" *ngIf="!loadingIndex">
@@ -19,8 +19,8 @@
     </div>
     <div class="o-chatbot__footer">
       <div class="o-chatbot__input a-input">
-        <input type="text" name="chat-input" autocomplete="off" #messageInput [placeholder]="placeholder" [(ngModel)]="message.message" (keyup.enter)="sendMessage()" />
-        <button type="submit" class="a-button has-icon" (click)="sendMessage()">
+        <input #messageInput type="text" name="chat-input" autocomplete="off" [placeholder]="placeholder" [(ngModel)]="message.message" [disabled]="disableChatbotByAction !== ''" (keyup.enter)="sendMessage()" />
+        <button type="submit" class="a-button has-icon" [disabled]="disableChatbotByAction !== ''" (click)="sendMessage()">
           <i class="fa fa-send-o"></i>
         </button>
       </div>

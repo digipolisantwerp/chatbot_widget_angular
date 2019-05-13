@@ -1,8 +1,10 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { ChatbotService } from './chatbot.service';
@@ -18,6 +20,8 @@ import {
 })
 export class ChatbotComponent implements OnInit {
   @ViewChild('messageInput') messageInput: ElementRef;
+
+  @Output() actionClicked = new EventEmitter<any>();
 
   // BFF URL
   @Input() url: string;
@@ -51,6 +55,7 @@ export class ChatbotComponent implements OnInit {
   public isLoading = false;
   public loadingIndex: number;
   public isOpen = false;
+  public disableChatbotByAction = '';
 
   constructor(
     private chatbotService: ChatbotService,
@@ -117,6 +122,24 @@ export class ChatbotComponent implements OnInit {
   public sendReply(event: any): void {
     this.message.message = event.message;
     this.sendMessage();
+  }
+
+  public performAction(event: any): void {
+    this.disableChatbotByAction = event.action;
+    this.actionClicked.emit(event);
+  }
+
+  public completeAction(result: any): void {
+    if (result.action === this.disableChatbotByAction) {
+      this.message = {
+        session_id: this.session,
+        message: result.message,
+        type: 'text',
+        send: true,
+      };
+      this.sendMessage(true);
+      this.disableChatbotByAction = '';
+    }
   }
 
   public toggleChatbot(): void {

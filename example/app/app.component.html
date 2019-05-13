@@ -4,14 +4,20 @@
   </header>
   <div class="main u-margin-top-lg">
     <aui-chatbot
+      #myExampleChatbot
       [url]="'http://localhost:3000/api/chatbot'"
       [session]="session1"
       [title]="'Een voorbeeldchatbot'"
       [placeholder]="'Begin hier te typen…'"
       [pinned]="false"
       [delay]="1000"
-      [height]="500">
+      [height]="500"
+      (actionClicked)="performAction($event)">
     </aui-chatbot>
+
+    <div class="u-margin-top">
+      <button *ngIf="showActionButton" (click)="completeAction()" class="a-button a-button--success">Complete action</button>
+    </div>
   </div>
   <!-- <div class="main u-margin-top-lg">
     <aui-chatbot

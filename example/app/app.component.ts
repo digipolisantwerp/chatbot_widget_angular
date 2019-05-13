@@ -1,4 +1,11 @@
-import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  ViewChild,
+} from '@angular/core';
+import {
+  ChatbotComponent
+} from '../../src/chatbot/chatbot.component';
 
 @Component({
   selector: 'aui-root',
@@ -7,8 +14,26 @@ import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
+  @ViewChild('myExampleChatbot') myExampleChatbot: ChatbotComponent;
+
   // start new random sessions every time
   public session1: string = Math.random().toString(36).substring(7);
   public session2: string = Math.random().toString(36).substring(7);
+  public showActionButton = false;
+  public actionFired = '';
+
+  public performAction(event) {
+    this.showActionButton = true;
+    this.actionFired = event.action;
+  }
+
+  public completeAction() {
+    const result = {
+      action: this.actionFired,
+      message: 'success',
+    };
+    this.showActionButton = false;
+    this.myExampleChatbot.completeAction(result);
+  }
 
 }

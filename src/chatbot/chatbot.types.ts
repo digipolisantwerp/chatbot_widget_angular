@@ -1,20 +1,24 @@
 /**
- * interface ChatbotMessageButton
+ * interface ChatbotMessageElement
  * ------------------------------
  * replyText: message text that is sent to the chatbot engine
  * text: text that is shown to the user as possible reply
+ * action: the name that identifies the action
+ * other values: optional values that can be sent along with an action
  */
-export interface ChatbotMessageButton {
-  replyText: string;
-  text: string;
+export interface ChatbotMessageElement {
+  replyText?: string;
+  text?: string;
+  action?: string;
+  [x: string]: any;
 }
 
 /**
  * interface ChatbotMessage
  * ------------------------
  * message: message to send to or receive from the chatbot engine
- * type: message type, can be either text, url, image, radio or error
- * elements: an array of chatbot message buttons; all possible replies when type is radio
+ * type: message type, can be either text, url, image, quickReply, action or error
+ * elements: an array of chatbot message buttons; all possible replies when type is quickReply or action
  * image: image source when type is image
  * session_id: id that identifies the chat to easily retrieve the chat history if necessary
  * url: url address when type is url
@@ -24,13 +28,14 @@ export interface ChatbotMessageButton {
 export interface ChatbotMessage {
   message: string;
   type: string;
-  elements?: ChatbotMessageButton[];
+  elements?: ChatbotMessageElement[];
   image?: string;
   session_id?: string;
   url?: string;
   send?: boolean;
   hide?: boolean;
   avatar?: string;
+  disable?: boolean;
 }
 
 /**

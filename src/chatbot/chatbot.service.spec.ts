@@ -75,7 +75,7 @@ describe('ChatbotService', () => {
     chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
       expect(result).toEqual(mockResponse2['data']);
       expect(result.length).toEqual(2);
-      expect(result[1]['type']).toEqual('radio');
+      expect(result[1]['type']).toEqual('quickReply');
       expect(result[1]['elements']['replyText']).toEqual(mockResponse2['quickReplies']['some action']);
       done();
     });

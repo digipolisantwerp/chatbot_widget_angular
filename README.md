@@ -18,7 +18,7 @@ There is a demo app, see below for instructions on running it.
 
 Import the component in your module:
 
-```ts
+```js
 @NgModule({
   imports: [
     ...,
@@ -101,15 +101,14 @@ Triggers when the user clicks a button of a message with type `action`. This typ
 
 1. Your BFF sends a message of type `action` with one or more actions defined.
 
-  ```
+  ```js
   {
-    type: 'action',
     actions: [
       {
         action: 'someAction',
         text: 'Click me',
       }
-    ],
+    ]
   }
   ```
 
@@ -125,7 +124,7 @@ Triggers when the user clicks a button of a message with type `action`. This typ
 
   > Important! The method property of `completeAction` has to contain the exact same `action` value that was first defined when disabling the chatbot, otherwise the chatbot will just ignore the method call.
 
-  ```
+  ```js
   const result = {
     action: 'someAction',
     message: 'success',

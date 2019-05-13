@@ -10,6 +10,7 @@ import {
 import { ChatbotService } from './chatbot.service';
 import {
   ChatbotMessage,
+  ChatbotMessageAction,
   ChatbotConversation,
 } from './chatbot.types';
 
@@ -21,7 +22,7 @@ import {
 export class ChatbotComponent implements OnInit {
   @ViewChild('messageInput') messageInput: ElementRef;
 
-  @Output() actionClicked = new EventEmitter<any>();
+  @Output() actionStarted = new EventEmitter<any>();
 
   // BFF URL
   @Input() url: string;
@@ -55,7 +56,7 @@ export class ChatbotComponent implements OnInit {
   public isLoading = false;
   public loadingIndex: number;
   public isOpen = false;
-  public disableChatbotByAction = '';
+  public currentAction = '';
 
   constructor(
     private chatbotService: ChatbotService,
@@ -124,13 +125,13 @@ export class ChatbotComponent implements OnInit {
     this.sendMessage();
   }
 
-  public performAction(event: any): void {
-    this.disableChatbotByAction = event.action;
-    this.actionClicked.emit(event);
+  public performAction(event: ChatbotMessageAction): void {
+    this.currentAction = event.action;
+    this.actionStarted.emit(event);
   }
 
   public completeAction(result: any): void {
-    if (result.action === this.disableChatbotByAction) {
+    if (result.action === this.currentAction) {
       this.message = {
         session_id: this.session,
         message: result.message,
@@ -138,7 +139,7 @@ export class ChatbotComponent implements OnInit {
         send: true,
       };
       this.sendMessage(true);
-      this.disableChatbotByAction = '';
+      this.currentAction = '';
     }
   }
 

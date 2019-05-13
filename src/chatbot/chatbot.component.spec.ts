@@ -194,14 +194,14 @@ describe('Chatbot widget', () => {
 
   describe('Actions', () => {
 
-    it('should emit actionClicked event', (done) => {
+    it('should emit actionStarted event', (done) => {
       const testAction = {
         'text': 'Click my action',
         'action': 'dummyAction'
       };
-      component.actionClicked.subscribe(g => {
+      component.actionStarted.subscribe(g => {
         expect(g.action).toEqual('dummyAction');
-        expect(component.disableChatbotByAction).toEqual('dummyAction');
+        expect(component.currentAction).toEqual('dummyAction');
         done();
       });
       component.performAction(testAction);
@@ -209,7 +209,7 @@ describe('Chatbot widget', () => {
 
     it('should send an invisible reply when an action is completed', () => {
       fixture.detectChanges();
-      component.disableChatbotByAction = 'someAction';
+      component.currentAction = 'someAction';
       spyOn(component, 'completeAction').and.callThrough();
       spyOn(component, 'sendMessage');
       component.completeAction(mockActionReply);
@@ -218,7 +218,7 @@ describe('Chatbot widget', () => {
     });
 
     it('should do nothing when an action is completed, but a wrong action is passed', () => {
-      component.disableChatbotByAction = 'someOtherAction';
+      component.currentAction = 'someOtherAction';
       fixture.detectChanges();
       spyOn(component, 'sendMessage');
       component.completeAction(mockActionReply);

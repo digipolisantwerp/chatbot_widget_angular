@@ -128,10 +128,10 @@ describe('MessageComponent', () => {
       testMessageComponent.sendReply('Reply');
     });
 
-    it('should emit actionClicked event', (done) => {
+    it('should emit actionStarted event', (done) => {
       const testAction = {
+        'action': 'dummyAction',
         'text': 'Click my action',
-        'action': 'dummyAction'
       };
       const testMessageComponent = new MessageComponent();
       testMessageComponent.data = {
@@ -139,12 +139,12 @@ describe('MessageComponent', () => {
         'type': 'action',
         'elements': [
           {
+            'action': 'dummyAction',
             'text': 'Click my action',
-            'action': 'dummyAction'
-          }
+          },
         ],
       };
-      testMessageComponent.actionClicked.subscribe(g => {
+      testMessageComponent.actionStarted.subscribe(g => {
         expect(g.action).toEqual('dummyAction');
         done();
       });

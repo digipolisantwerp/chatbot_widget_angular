@@ -37,8 +37,21 @@ const mockResponse2 = {
   }],
   quickReplies: [
     {
+      action: 'some reply',
       text: 'some text',
+    }
+  ]
+};
+
+const mockResponse3 = {
+  data: [{
+    message: 'Hello again from chatbot',
+    type: 'text',
+  }],
+  actions: [
+    {
       action: 'some action',
+      text: 'some text',
     }
   ]
 };
@@ -76,10 +89,22 @@ describe('ChatbotService', () => {
       expect(result).toEqual(mockResponse2['data']);
       expect(result.length).toEqual(2);
       expect(result[1]['type']).toEqual('quickReply');
-      expect(result[1]['elements']['replyText']).toEqual(mockResponse2['quickReplies']['some action']);
+      expect(result[1]['elements']['replyText']).toEqual(mockResponse2['quickReplies']['some reply']);
       done();
     });
     httpMock.expectOne('/mockUrl').flush(mockResponse2);
+    httpMock.verify();
+  });
+
+  it('should reformat the data when actions are present', (done) => {
+    chatbotService.sendMessage('/mockUrl', mockData).subscribe((result: any) => {
+      expect(result).toEqual(mockResponse3['data']);
+      expect(result.length).toEqual(2);
+      expect(result[1]['type']).toEqual('action');
+      expect(result[1]['elements']['action']).toEqual(mockResponse3['actions']['some action']);
+      done();
+    });
+    httpMock.expectOne('/mockUrl').flush(mockResponse3);
     httpMock.verify();
   });
 

@@ -18,7 +18,6 @@ export class AppComponent {
 
   // start new random sessions every time
   public session1: string = Math.random().toString(36).substring(7);
-  public session2: string = Math.random().toString(36).substring(7);
   public showActionButton = false;
   public actionFired = '';
 

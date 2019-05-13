@@ -44,6 +44,23 @@ export class ChatbotService {
               }),
             });
           }
+
+          /**
+           * The same quickReplies logic goes for actions
+           */
+          if (result['actions']) {
+            result['data'].push({
+              type: 'action',
+              message: '',
+              elements: result['actions'].map((item) => {
+                return {
+                  text: item.text,
+                  action: item.action,
+                  params: item.params,
+                };
+              }),
+            });
+          }
           return result['data'];
         }),
         catchError((error: any) => Observable.throw(error))

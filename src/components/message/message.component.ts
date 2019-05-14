@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import {
   ChatbotMessage,
-  ChatbotMessageButton,
+  ChatbotMessageAction,
 } from '../../chatbot/chatbot.types';
 
 @Component({
@@ -18,9 +18,15 @@ import {
 export class MessageComponent {
   @Input() data: ChatbotMessage;
   @Output() replyClicked = new EventEmitter<any>();
+  @Output() actionStarted = new EventEmitter<any>();
 
-  public sendReply(message: ChatbotMessageButton): void {
+  public sendReply(message: string): void {
     this.replyClicked.emit({ message });
     this.data.hide = true;
+  }
+
+  public performAction(message: ChatbotMessageAction): void {
+    this.actionStarted.emit(message);
+    this.data.disable = true;
   }
 }

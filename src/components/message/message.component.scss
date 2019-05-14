@@ -20,7 +20,8 @@ $border-radius: $spacer-xs;
       display: inline-block;
     }
 
-    .a-button {
+    .a-button,
+    .a-button-outline {
       display: inline-block;
       margin: 0 $spacer-xs / 4 $spacer-xs / 2;
       width: auto;
@@ -53,7 +54,7 @@ $border-radius: $spacer-xs;
     padding: $spacer-xs / 6 * 5 $spacer-sm / 9 * 7; // 10px 14px => min-height = 36px
   }
 
-  &__radio {
+  &__buttons {
     margin-bottom: $spacer-xs / -2;
   }
 

@@ -18,7 +18,7 @@ There is a demo app, see below for instructions on running it.
 
 Import the component in your module:
 
-```ts
+```js
 @NgModule({
   imports: [
     ...,
@@ -83,6 +83,54 @@ In the index.html, include the core branding stylesheet:
 #### **avatar**
 `string` Avatar image URL. Default is the special provided Antwerp icon.
 
+### Events
+
+#### **actionStarted**
+Triggers when the user clicks a button of a message with type `action`. This type of message is injected by the BFF by injecting it into the response. The `actionStarted` output event requires a defined action and pauses the workings of the chatbot widget, waiting for a method call (`completeAction`) that has the same defined action. It allows the developer to handle some things outside the chatbot (e.g. a payment) before returning to the chatbot conversation.
+
+##### How does it work?
+
+```
+<aui-chatbot
+  #myChatbotWithAction
+  [url]="'http://localhost:3000/api/chatbot'"
+  [session]="session1"
+  (actionStarted)="triggerMe($event)">
+</aui-chatbot>
+```
+
+1. Your BFF sends a message of type `action` with one or more actions defined.
+
+  ```js
+  {
+    actions: [
+      {
+        action: 'someAction',
+        text: 'Click me',
+      }
+    ]
+  }
+  ```
+
+2. When the user clicks this button, the defined `actionStarted` output event will fire and the chatbot is disabled.
+
+  ```
+  public triggerMe(event) {
+    // Do something with `event`
+  }
+  ```
+
+3. `$event` can now be handled in the parent controller and whenever finished, the chatbot widget's `completeAction` method can be triggered to re-enable the chatbot conversation. The result will be sent as a hidden message to the chatbot engine.
+
+  > Important! The method property of `completeAction` has to contain the exact same `action` value that was first defined when disabling the chatbot, otherwise the chatbot will just ignore the method call.
+
+  ```js
+  const result = {
+    action: 'someAction',
+    message: 'success',
+  }
+  this.myChatbotWithAction.completeAction(result);
+  ```
 
 ## Run the demo app
 
@@ -93,7 +141,7 @@ In the index.html, include the core branding stylesheet:
 
 Browse to [localhost:4200](http://localhost:4200)
 
-To use the chatbot widget, you will need to have also started the corresponding back-end service.
+In order to use the chatbot widget demo app, you will also need to have started the corresponding back-end service.
 
 ## Contributing
 

@@ -1,13 +1,16 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { ChatbotService } from './chatbot.service';
 import {
   ChatbotMessage,
+  ChatbotMessageAction,
   ChatbotConversation,
 } from './chatbot.types';
 
@@ -18,6 +21,8 @@ import {
 })
 export class ChatbotComponent implements OnInit {
   @ViewChild('messageInput') messageInput: ElementRef;
+
+  @Output() actionStarted = new EventEmitter<any>();
 
   // BFF URL
   @Input() url: string;
@@ -51,6 +56,7 @@ export class ChatbotComponent implements OnInit {
   public isLoading = false;
   public loadingIndex: number;
   public isOpen = false;
+  public currentAction = '';
 
   constructor(
     private chatbotService: ChatbotService,
@@ -117,6 +123,24 @@ export class ChatbotComponent implements OnInit {
   public sendReply(event: any): void {
     this.message.message = event.message;
     this.sendMessage();
+  }
+
+  public performAction(event: ChatbotMessageAction): void {
+    this.currentAction = event.action;
+    this.actionStarted.emit(event);
+  }
+
+  public completeAction(result: any): void {
+    if (result.action === this.currentAction) {
+      this.message = {
+        session_id: this.session,
+        message: result.message,
+        type: 'text',
+        send: true,
+      };
+      this.sendMessage(true);
+      this.currentAction = '';
+    }
   }
 
   public toggleChatbot(): void {

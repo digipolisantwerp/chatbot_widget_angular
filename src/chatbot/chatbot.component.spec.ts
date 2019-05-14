@@ -29,6 +29,11 @@ const mockError = {
   },
 };
 
+const mockActionReply = {
+  action: 'someAction',
+  message: 'success',
+};
+
 const wrongFormatMockError = {
   status: '401',
   statusText: 'Unauthorized',
@@ -184,6 +189,40 @@ describe('Chatbot widget', () => {
       spyOn(chatbotService, 'sendMessage').and.callThrough();
       component.sendReply(mockData);
       expect(chatbotService.sendMessage).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Actions', () => {
+
+    it('should emit actionStarted event', (done) => {
+      const testAction = {
+        'text': 'Click my action',
+        'action': 'dummyAction'
+      };
+      component.actionStarted.subscribe(g => {
+        expect(g.action).toEqual('dummyAction');
+        expect(component.currentAction).toEqual('dummyAction');
+        done();
+      });
+      component.performAction(testAction);
+    });
+
+    it('should send an invisible reply when an action is completed', () => {
+      fixture.detectChanges();
+      component.currentAction = 'someAction';
+      spyOn(component, 'completeAction').and.callThrough();
+      spyOn(component, 'sendMessage');
+      component.completeAction(mockActionReply);
+      expect(component.completeAction).toHaveBeenCalled();
+      expect(component.sendMessage).toHaveBeenCalled();
+    });
+
+    it('should do nothing when an action is completed, but a wrong action is passed', () => {
+      component.currentAction = 'someOtherAction';
+      fixture.detectChanges();
+      spyOn(component, 'sendMessage');
+      component.completeAction(mockActionReply);
+      expect(component.sendMessage).not.toHaveBeenCalled();
     });
   });
 });

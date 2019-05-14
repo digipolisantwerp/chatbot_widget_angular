@@ -1,5 +1,4 @@
-<div class="m-message" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'radio' || data.type === 'error'}" *ngIf="!data.hide">
-
+<div class="m-message" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'quickReply' || data.type === 'error' || data.type === 'action'}" *ngIf="!data.hide">
   <div *ngIf="!data.send && data.avatar" class="a-avatar a-avatar--small">
     <img [src]="data.avatar" alt="Avatar.">
   </div>
@@ -19,9 +18,15 @@
       <img [src]="data.image" alt="Image.">
     </span>
 
-    <span *ngSwitchCase="'radio'" class="m-message__radio">
+    <span *ngSwitchCase="'quickReply'" class="m-message__buttons">
       <ng-container *ngFor="let element of data.elements">
         <button (click)="sendReply(element.replyText)" class="a-button a-button--small">{{ element.text }}</button>
+      </ng-container>
+    </span>
+
+    <span *ngSwitchCase="'action'" class="m-message__buttons">
+      <ng-container *ngFor="let element of data.elements">
+        <button [disabled]="data.disable" (click)="performAction(element)" class="a-button-outline a-button--small">{{ element.text }}</button>
       </ng-container>
     </span>
 

@@ -34,12 +34,29 @@ export class ChatbotService {
            */
           if (result['quickReplies']) {
             result['data'].push({
-              type: 'radio',
+              type: 'quickReply',
               message: '',
               elements: result['quickReplies'].map((item) => {
                 return {
                   text: item.text,
                   replyText: item.action
+                };
+              }),
+            });
+          }
+
+          /**
+           * The same quickReplies logic goes for actions
+           */
+          if (result['actions']) {
+            result['data'].push({
+              type: 'action',
+              message: '',
+              elements: result['actions'].map((item) => {
+                return {
+                  text: item.text,
+                  action: item.action,
+                  params: item.params,
                 };
               }),
             });

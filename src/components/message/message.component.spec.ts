@@ -80,7 +80,7 @@ describe('MessageComponent', () => {
     it('should render buttons', () => {
       component.data = {
         'message': '',
-        'type': 'radio',
+        'type': 'quickReply',
         'elements': [
           {
             'text': 'Click me',
@@ -93,7 +93,7 @@ describe('MessageComponent', () => {
         ],
       };
       fixture.detectChanges();
-      const allButtons = fixture.nativeElement.querySelector('.m-message__radio').querySelectorAll('button');
+      const allButtons = fixture.nativeElement.querySelector('.m-message__buttons').querySelectorAll('button');
       expect(allButtons.length === component.data.elements.length).toBeTruthy();
 
       for (let i = 0; i < allButtons.length; i++) {
@@ -104,16 +104,12 @@ describe('MessageComponent', () => {
 
   });
 
-  describe('Event Emitter', () => {
+  describe('Event emitters', () => {
     it('should emit replyClicked event', (done) => {
-      const reply = {
-        replyText: 'Reply',
-        text: 'reply',
-      };
-      const messageComponent = new MessageComponent();
-      messageComponent.data = {
+      const testMessageComponent = new MessageComponent();
+      testMessageComponent.data = {
         'message': '',
-        'type': 'radio',
+        'type': 'quickReply',
         'elements': [
           {
             'text': 'Click me',
@@ -125,11 +121,34 @@ describe('MessageComponent', () => {
           },
         ],
       };
-      messageComponent.replyClicked.subscribe(g => {
-        expect(g.message).toEqual(reply);
+      testMessageComponent.replyClicked.subscribe(g => {
+        expect(g.message).toEqual('Reply');
         done();
       });
-      messageComponent.sendReply(reply);
+      testMessageComponent.sendReply('Reply');
+    });
+
+    it('should emit actionStarted event', (done) => {
+      const testAction = {
+        'action': 'dummyAction',
+        'text': 'Click my action',
+      };
+      const testMessageComponent = new MessageComponent();
+      testMessageComponent.data = {
+        'message': '',
+        'type': 'action',
+        'elements': [
+          {
+            'action': 'dummyAction',
+            'text': 'Click my action',
+          },
+        ],
+      };
+      testMessageComponent.actionStarted.subscribe(g => {
+        expect(g.action).toEqual('dummyAction');
+        done();
+      });
+      testMessageComponent.performAction(testAction);
     });
   });
 });

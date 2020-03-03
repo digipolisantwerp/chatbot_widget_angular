@@ -12,6 +12,7 @@ import {
   ChatbotMessage,
   ChatbotMessageAction,
   ChatbotConversation,
+  ChatbotMessageAriaLabels,
 } from './chatbot.types';
 
 @Component({
@@ -50,6 +51,16 @@ export class ChatbotComponent implements OnInit {
 
   // Avatar to display
   @Input() avatar = 'https://cdn.antwerpen.be/core_branding_favicons/chatbot/a-chat.svg';
+
+  // Default ARIA labels
+  @Input() aria: ChatbotMessageAriaLabels = {
+    chatbot: 'Chatbot',
+    close: 'Chatbot minimaliseren',
+    avatar: 'Avatar.',
+    message: 'Te verzenden bericht',
+    send: 'Bericht verzenden',
+    toggle: 'Een vraag stellen',
+  };
 
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;
@@ -163,8 +174,7 @@ export class ChatbotComponent implements OnInit {
   private pushError(error): void {
     let message = 'Error';
     if (typeof error !== 'undefined') {
-      const title = (error.error && error.error.title) ? error.error.title : error.title;
-      message = 'Error ' + error.status + ' - ' + error.statusText + ': ' + title;
+      message = 'Error ' + error.status + ' - ' + error.message;
     }
     const errorMessage: ChatbotMessage = {
       message,

@@ -14,6 +14,7 @@ import {
   ChatbotConversation,
   ChatbotMessageAriaLabels,
 } from './chatbot.types';
+import { CHATBOT_ARIA_DEFAULTS } from './chatbot.aria-defaults';
 
 @Component({
   selector: 'aui-chatbot',
@@ -52,15 +53,18 @@ export class ChatbotComponent implements OnInit {
   // Avatar to display
   @Input() avatar = 'https://cdn.antwerpen.be/core_branding_favicons/chatbot/a-chat.svg';
 
-  // Default ARIA labels
-  @Input() aria: ChatbotMessageAriaLabels = {
-    chatbot: 'Chatbot',
-    close: 'Chatbot minimaliseren',
-    avatar: 'Avatar.',
-    message: 'Te verzenden bericht',
-    send: 'Bericht verzenden',
-    toggle: 'Een vraag stellen',
-  };
+  // Set ARIA labels
+  @Input()
+  set aria(obj: ChatbotMessageAriaLabels) {
+    this._aria = {
+      ...CHATBOT_ARIA_DEFAULTS,
+      ...obj,
+    };
+  }
+
+  get aria(): ChatbotMessageAriaLabels {
+    return this._aria;
+  }
 
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;
@@ -68,6 +72,8 @@ export class ChatbotComponent implements OnInit {
   public loadingIndex: number;
   public isOpen = false;
   public currentAction = '';
+
+  private _aria: ChatbotMessageAriaLabels = CHATBOT_ARIA_DEFAULTS;
 
   constructor(
     private chatbotService: ChatbotService,

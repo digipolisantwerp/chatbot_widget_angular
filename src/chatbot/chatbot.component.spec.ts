@@ -14,6 +14,7 @@ import {
   ChatbotMessage,
   ChatbotConversation,
 } from './chatbot.types';
+import { CHATBOT_ARIA_DEFAULTS } from './chatbot.aria-defaults';
 
 const mockData: ChatbotMessage = {
   message: 'Hello',
@@ -202,5 +203,28 @@ describe('Chatbot widget', () => {
       component.completeAction(mockActionReply);
       expect(component.sendMessage).not.toHaveBeenCalled();
     });
+  });
+
+  describe('Accessibility', () => {
+
+    it('should contain all necessary ARIA labels', () => {
+      fixture.detectChanges();
+      expect(component.aria).toEqual(CHATBOT_ARIA_DEFAULTS);
+      expect(component._aria).toEqual(CHATBOT_ARIA_DEFAULTS);
+    });
+
+    it('should be able to override the default ARIA labels', () => {
+      component.aria = {
+        send: 'Berichtje verzenden'
+      };
+      fixture.detectChanges();
+      const changedAriaValues = {
+        ...CHATBOT_ARIA_DEFAULTS,
+        send: 'Berichtje verzenden',
+      };
+      expect(component.aria).toEqual(changedAriaValues);
+      expect(component._aria).toEqual(changedAriaValues);
+    });
+
   });
 });

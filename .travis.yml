@@ -14,7 +14,11 @@ branches:
     - master
 
 script:
-  - npm run travis
+  - npm run lint
+  - npm run build
+  - npm test
+  - npm run e2e
+  - ng build --prod --base-href "https://digipolisantwerp.github.io/chatbot_widget_angular/"
 
 deploy:
   provider: pages

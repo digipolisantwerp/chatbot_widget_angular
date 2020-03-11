@@ -13,6 +13,15 @@ All notable changes to this project will be documented in this file.
 -->
 
 
+## [3.0.0] - 2020-03-04
+
+### Added
+- [BREAKING] Made the chatbot widget WCAG 2.1 AA compliant.
+
+### Fixed
+- Fixed the way errors are shown.
+
+
 ## [2.3.0] - 2019-05-13
 
 ### Added
@@ -97,7 +106,8 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.3.0...v3.0.0
 [2.3.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.2...v2.2.0
 [2.1.2]: https://github.com/digipolisantwerp/chatbot_widget_angular/compare/v2.1.1...v2.1.2

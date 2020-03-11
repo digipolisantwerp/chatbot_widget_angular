@@ -20,6 +20,9 @@ export class AppComponent {
   public session1: string = Math.random().toString(36).substring(7);
   public showActionButton = false;
   public actionFired = '';
+  public aria = {
+    send: 'Een berichtje sturen…'
+  };
 
   public performAction(event) {
     this.showActionButton = true;

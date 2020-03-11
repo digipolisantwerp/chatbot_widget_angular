@@ -63,7 +63,7 @@ export class ChatbotService {
           }
           return result['data'];
         }),
-        catchError((error: any) => Observable.throw(error))
+        catchError((error: any) => throwError(error))
       );
   }
 

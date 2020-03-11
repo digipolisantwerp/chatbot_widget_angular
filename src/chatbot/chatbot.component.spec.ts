@@ -14,6 +14,7 @@ import {
   ChatbotMessage,
   ChatbotConversation,
 } from './chatbot.types';
+import { CHATBOT_ARIA_DEFAULTS } from './chatbot.aria-defaults';
 
 const mockData: ChatbotMessage = {
   message: 'Hello',
@@ -22,23 +23,13 @@ const mockData: ChatbotMessage = {
 
 const mockError = {
   status: '401',
-  statusText: 'Unauthorized',
-  error: {
-    error: 'Some error occurred',
-    title: 'Please login first!',
-  },
+  error: 'Error in the wrong format',
+  message: 'Please login first!',
 };
 
 const mockActionReply = {
   action: 'someAction',
   message: 'success',
-};
-
-const wrongFormatMockError = {
-  status: '401',
-  statusText: 'Unauthorized',
-  error: 'Error in the wrong format',
-  title: 'Please login first!',
 };
 
 class MockChatbotService {
@@ -117,19 +108,7 @@ describe('Chatbot widget', () => {
         message: 'Hello',
         type: 'text',
       }, {
-        message: 'Error 401 - Unauthorized: Please login first!',
-        type: 'error',
-      }]);
-    });
-
-    it('should add an error to the chat, even in the wrong format', () => {
-      component.data = [mockData];
-      component.pushError(wrongFormatMockError);
-      expect(component.data).toEqual([{
-        message: 'Hello',
-        type: 'text',
-      }, {
-        message: 'Error 401 - Unauthorized: Please login first!',
+        message: 'Error 401 - Please login first!',
         type: 'error',
       }]);
     });
@@ -224,5 +203,28 @@ describe('Chatbot widget', () => {
       component.completeAction(mockActionReply);
       expect(component.sendMessage).not.toHaveBeenCalled();
     });
+  });
+
+  describe('Accessibility', () => {
+
+    it('should contain all necessary ARIA labels', () => {
+      fixture.detectChanges();
+      expect(component.aria).toEqual(CHATBOT_ARIA_DEFAULTS);
+      expect(component._aria).toEqual(CHATBOT_ARIA_DEFAULTS);
+    });
+
+    it('should be able to override the default ARIA labels', () => {
+      component.aria = {
+        send: 'Berichtje verzenden'
+      };
+      fixture.detectChanges();
+      const changedAriaValues = {
+        ...CHATBOT_ARIA_DEFAULTS,
+        send: 'Berichtje verzenden',
+      };
+      expect(component.aria).toEqual(changedAriaValues);
+      expect(component._aria).toEqual(changedAriaValues);
+    });
+
   });
 });

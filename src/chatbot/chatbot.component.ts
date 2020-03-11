@@ -12,7 +12,9 @@ import {
   ChatbotMessage,
   ChatbotMessageAction,
   ChatbotConversation,
+  ChatbotMessageAriaLabels,
 } from './chatbot.types';
+import { CHATBOT_ARIA_DEFAULTS } from './chatbot.aria-defaults';
 
 @Component({
   selector: 'aui-chatbot',
@@ -51,12 +53,27 @@ export class ChatbotComponent implements OnInit {
   // Avatar to display
   @Input() avatar = 'https://cdn.antwerpen.be/core_branding_favicons/chatbot/a-chat.svg';
 
+  // Set ARIA labels
+  @Input()
+  set aria(obj: ChatbotMessageAriaLabels) {
+    this._aria = {
+      ...CHATBOT_ARIA_DEFAULTS,
+      ...obj,
+    };
+  }
+
+  get aria(): ChatbotMessageAriaLabels {
+    return this._aria;
+  }
+
   public data: ChatbotConversation = [];
   public message: ChatbotMessage;
   public isLoading = false;
   public loadingIndex: number;
   public isOpen = false;
   public currentAction = '';
+
+  private _aria: ChatbotMessageAriaLabels = CHATBOT_ARIA_DEFAULTS;
 
   constructor(
     private chatbotService: ChatbotService,
@@ -163,8 +180,7 @@ export class ChatbotComponent implements OnInit {
   private pushError(error): void {
     let message = 'Error';
     if (typeof error !== 'undefined') {
-      const title = (error.error && error.error.title) ? error.error.title : error.title;
-      message = 'Error ' + error.status + ' - ' + error.statusText + ': ' + title;
+      message = 'Error ' + error.status + ' - ' + error.message;
     }
     const errorMessage: ChatbotMessage = {
       message,

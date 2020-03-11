@@ -31,7 +31,7 @@ Import the component in your module:
 In the index.html, include the core branding stylesheet:
 
 ```html
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/3.0.3/main.min.css">
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/4.1.1/main.min.css">
 ```
 
 > For projects that are still using Angular 5, we are [maintaining a v1 branch](https://github.com/digipolisantwerp/chatbot_widget_angular/tree/v1), which will still receive bug fixes if needed.
@@ -82,6 +82,22 @@ In the index.html, include the core branding stylesheet:
 
 #### **avatar**
 `string` Avatar image URL. Default is the special provided Antwerp icon.
+
+#### **aria**
+`ChatbotMessageAriaLabels` Accessibility strings used throughout the chatbot UI:
+
+Default:
+
+```js
+{
+  chatbot: 'Chatbot',
+  close: 'Chatbot minimaliseren',
+  avatar: 'Avatar.',
+  message: 'Te verzenden bericht',
+  send: 'Bericht verzenden',
+  toggle: 'Een vraag stellen',
+}
+```
 
 ### Events
 

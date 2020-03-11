@@ -1,6 +1,6 @@
 /**
  * interface ChatbotMessageElement
- * ------------------------------
+ * -------------------------------
  * replyText: message text that is sent to the chatbot engine
  * text: text that is shown to the user as possible reply
  */
@@ -10,7 +10,7 @@ interface ChatbotMessageElement {
 }
 
 /**
- * interface ChatbotMessageParams
+ * interface ChatbotMessageAction
  * ------------------------------
  * action: the name that identifies the action
  * text: text that is shown to the user as possible acttion
@@ -23,8 +23,8 @@ export interface ChatbotMessageAction {
 }
 
 /**
- * interface ChatbotMessageParams
- * ------------------------------
+ * interface ChatbotMessageActionParam
+ * -----------------------------------
  * optional parameters that can be sent along with an action
  */
 interface ChatbotMessageActionParam {
@@ -56,6 +56,25 @@ export interface ChatbotMessage {
   hide?: boolean;
   avatar?: string;
   disable?: boolean;
+}
+
+/**
+ * interface ChatbotMessageAriaLabels
+ * ----------------------------------
+ * chatbot: title of the chatbot region. Defaults to 'Chatbot'.
+ * close: button label to minimise the chatbot window. Defaults to 'Chatbot minimaliseren'.
+ * avatar: alt text for the avatar. Defaults to 'Avatar.'.
+ * message: ARIA label for the input field. Defaults to 'Te verzenden bericht'.
+ * send: ARIA label for the send button. Defaults to 'Bericht verzenden'.
+ * toggle: Button label for the pinned chatbot. Defaults to 'Een vraag stellen'.
+ */
+export interface ChatbotMessageAriaLabels {
+  chatbot?: string;
+  close?: string;
+  avatar?: string;
+  message?: string;
+  send?: string;
+  toggle?: string;
 }
 
 /**

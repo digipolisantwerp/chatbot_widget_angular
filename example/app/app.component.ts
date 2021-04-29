@@ -14,7 +14,7 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  @ViewChild('myExampleChatbot') myExampleChatbot: ChatbotComponent;
+  @ViewChild('myExampleChatbot', { static: true }) myExampleChatbot: ChatbotComponent;
 
   // start new random sessions every time
   public session1: string = Math.random().toString(36).substring(7);

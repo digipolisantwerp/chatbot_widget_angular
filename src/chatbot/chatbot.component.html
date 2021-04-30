@@ -1,13 +1,13 @@
-<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}" [ngStyle]="{'height':!pinned ? height + 'px' : '', 'width':pinned ? width + 'px' : ''}" role="region" [attr.aria-label]="aria.chatbot">
+<div class="o-chatbot" [ngClass]="{'o-chatbot--pinned': pinned}" [ngStyle]="{'height':!pinned ? height + 'px' : '', 'width':pinned ? width + 'px' : ''}">
   <div class="o-chatbot__content" *ngIf="!pinned || (pinned && isOpen)">
     <div class="o-chatbot__header u-bg-primary u-text-xlight" [ngClass]="{'o-chatbot__header--no-title': !title}">
       <h1 class="h6 has-base-font u-text-bold u-margin-xs" *ngIf="title">{{ title }}</h1>
-      <button class="a-button has-icon" *ngIf="pinned" (click)="toggleChatbot()"><span class="fa fa-close" [attr.aria-label]="aria.close"></span></button>
+      <button class="a-button has-icon" *ngIf="pinned" (click)="toggleChatbot()"><aui-icon name="ai-close" [ariaLabel]="aria.close"></aui-icon></button>
     </div>
     <div class="o-chatbot__main" #chatbotMain [scrollTop]="chatbotMain.scrollHeight" tabindex="0">
-      <div *ngIf="data && data.length > 0" class="u-margin-xs" aria-live="polite">
+      <div *ngIf="data && data.length > 0" class="u-margin-xs" aria-live="polite" aria-atomic="false" role="log" [attr.aria-label]="aria.chatbot">
         <ng-container *ngFor="let message of data">
-          <aui-chatbot-message [data]="message" (replyClicked)="sendReply($event)" (actionStarted)="performAction($event)"></aui-chatbot-message>
+          <aui-chatbot-message [data]="message" [aria]="aria" (replyClicked)="sendReply($event)" (actionStarted)="performAction($event)"></aui-chatbot-message>
         </ng-container>
         <div *ngIf="isLoading" class="o-chatbot__loader">
           <div class="a-avatar a-avatar--small" *ngIf="!loadingIndex">
@@ -21,12 +21,12 @@
       <div class="o-chatbot__input a-input">
         <input #messageInput type="text" name="chat-input" autocomplete="off" [placeholder]="placeholder" [(ngModel)]="message.message" [disabled]="currentAction !== ''" (keyup.enter)="sendMessage()" [attr.aria-label]="aria.message" />
         <button type="submit" class="a-button has-icon" [disabled]="currentAction !== ''" (click)="sendMessage()" [attr.aria-label]="aria.send">
-          <span class="fa fa-send-o"></span>
+          <aui-icon name="ai-send-email"></aui-icon>
         </button>
       </div>
     </div>
   </div>
   <div class="o-chatbot__buttons" *ngIf="pinned && !isOpen">
-    <button (click)="toggleChatbot()" class="a-button has-icon-left"><span class="fa fa-comments"></span>{{ aria.toggle }}</button>
+    <button (click)="toggleChatbot()" class="a-button has-icon-left"><aui-icon name="ai-conversation-text"></aui-icon>{{ aria.toggle }}</button>
   </div>
 </div>

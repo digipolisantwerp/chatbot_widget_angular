@@ -1,13 +1,12 @@
 <div class="m-message" [ngClass]="{'m-message--right': data.send, 'm-message--center': data.type === 'quickReply' || data.type === 'error' || data.type === 'action'}" *ngIf="!data.hide">
   <div *ngIf="!data.send && data.avatar" class="a-avatar a-avatar--small">
-    <img [src]="data.avatar" alt="Avatar.">
+    <img [src]="data.avatar" [alt]="aria.avatar">
   </div>
 
   <div [ngSwitch]="data.type" class="m-message__content">
+    <span *ngIf="data.send" class="u-screen-reader-only">{{ aria.user }}</span>
 
-    <span *ngSwitchCase="'text'" class="m-message__text" tabindex="0">
-      {{ data.message }}
-    </span>
+    <span *ngSwitchCase="'text'" class="m-message__text" tabindex="0">{{ data.message }}</span>
 
     <span *ngSwitchCase="'url'" class="m-message__url">
       <a *ngIf="data.message" [href]="data.url" target="_blank" rel="external">{{ data.message }}</a>
@@ -30,9 +29,7 @@
       </ng-container>
     </span>
 
-    <span *ngSwitchCase="'error'" class="m-message__error u-text-danger" tabindex="0">
-      {{ data.message }}
-    </span>
+    <span *ngSwitchCase="'error'" class="m-message__error u-text-danger" tabindex="0">{{ data.message }}</span>
 
   </div>
 </div>

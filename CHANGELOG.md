@@ -13,6 +13,19 @@ All notable changes to this project will be documented in this file.
 -->
 
 
+## [4.0.0] - 2020-04-30
+
+### Changed
+- [BREAKING] Upgraded the component to work with Angular 8
+- [BREAKING] Replaced FontAwesome icons with all new Streamline icons
+- [BREAKING] Upgraded to core branding v5
+
+### Fixed
+- WCAG: improved chatbot's alt title
+- WCAG: improved screenreader support
+- WCAG: refined ARIA live
+
+
 ## [3.0.0] - 2020-03-11
 
 ### Added

@@ -21,7 +21,13 @@ export class AppComponent {
   public showActionButton = false;
   public actionFired = '';
   public aria = {
-    send: 'Een berichtje sturen…'
+    chatbot: 'The chatbot',
+    close: 'Minimize chatbot',
+    avatar: 'The chatbot:',
+    user: 'You:',
+    message: 'Message to send',
+    send: 'Send message',
+    toggle: 'Ask a question',
   };
 
   public performAction(event) {

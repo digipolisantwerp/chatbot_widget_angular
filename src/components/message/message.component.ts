@@ -7,6 +7,7 @@ import {
 import {
   ChatbotMessage,
   ChatbotMessageAction,
+  ChatbotMessageAriaLabels,
 } from '../../chatbot/chatbot.types';
 
 @Component({
@@ -17,6 +18,7 @@ import {
 
 export class MessageComponent {
   @Input() data: ChatbotMessage;
+  @Input() aria: ChatbotMessageAriaLabels;
   @Output() replyClicked = new EventEmitter<any>();
   @Output() actionStarted = new EventEmitter<any>();
 

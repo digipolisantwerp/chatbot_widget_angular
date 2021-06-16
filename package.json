@@ -36,10 +36,10 @@
   ],
   "peerDependencies": {},
   "dependencies": {
-    "@acpaas-ui/ngx-icon": "^4.0.0-beta.1"
+    "@acpaas-ui/ngx-icon": "^5.0.0"
   },
   "devDependencies": {
-    "@a-ui/core": "~4.3.1",
+    "@a-ui/core": "^5.0.1",
     "@angular-devkit/build-angular": "~0.803.29",
     "@angular/animations": "~8.2.14",
     "@angular/cli": "~8.3.29",

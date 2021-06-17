@@ -4,5 +4,7 @@
     "entryFile": "src/index.ts",
     "umdModuleIds": {}
   },
-  "whitelistedNonPeerDependencies": []
+  "whitelistedNonPeerDependencies": [
+    "@acpaas-ui"
+  ]
 }

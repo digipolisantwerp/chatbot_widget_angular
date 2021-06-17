@@ -63,7 +63,7 @@ export interface ChatbotMessage {
  * ----------------------------------
  * chatbot: title of the chatbot region. Defaults to 'Chatbot'.
  * close: button label to minimise the chatbot window. Defaults to 'Chatbot minimaliseren'.
- * avatar: alt text for the avatar. Defaults to 'Avatar.'.
+ * avatar: alt text for the avatar. Defaults to 'Chatbot.'.
  * message: ARIA label for the input field. Defaults to 'Te verzenden bericht'.
  * send: ARIA label for the send button. Defaults to 'Bericht verzenden'.
  * toggle: Button label for the pinned chatbot. Defaults to 'Een vraag stellen'.
@@ -72,6 +72,7 @@ export interface ChatbotMessageAriaLabels {
   chatbot?: string;
   close?: string;
   avatar?: string;
+  user?: string;
   message?: string;
   send?: string;
   toggle?: string;

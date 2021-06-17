@@ -22,7 +22,7 @@ import { CHATBOT_ARIA_DEFAULTS } from './chatbot.aria-defaults';
   templateUrl: './chatbot.component.html',
 })
 export class ChatbotComponent implements OnInit {
-  @ViewChild('messageInput') messageInput: ElementRef;
+  @ViewChild('messageInput', { static: false }) messageInput: ElementRef;
 
   @Output() actionStarted = new EventEmitter<any>();
 

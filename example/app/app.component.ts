@@ -14,14 +14,20 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  @ViewChild('myExampleChatbot') myExampleChatbot: ChatbotComponent;
+  @ViewChild('myExampleChatbot', { static: true }) myExampleChatbot: ChatbotComponent;
 
   // start new random sessions every time
   public session1: string = Math.random().toString(36).substring(7);
   public showActionButton = false;
   public actionFired = '';
   public aria = {
-    send: 'Een berichtje sturen…'
+    chatbot: 'The chatbot',
+    close: 'Minimize chatbot',
+    avatar: 'The chatbot:',
+    user: 'You:',
+    message: 'Message to send',
+    send: 'Send message',
+    toggle: 'Ask a question',
   };
 
   public performAction(event) {

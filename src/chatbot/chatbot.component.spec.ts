@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClient } from '@angular/common/http';
+import { IconModule } from '@acpaas-ui/ngx-icon';
 
 import { Observable } from 'rxjs';
 import {
@@ -47,6 +47,7 @@ describe('Chatbot widget', () => {
     TestBed.configureTestingModule({
       imports: [
         ChatbotModule,
+        IconModule,
       ],
       providers: [
         {
@@ -54,7 +55,7 @@ describe('Chatbot widget', () => {
           useClass: MockChatbotService,
         },
       ],
-    });
+    }).compileComponents();
     fixture = TestBed.createComponent(ChatbotComponent);
     component = fixture.componentInstance;
     debugElement = fixture.debugElement;
